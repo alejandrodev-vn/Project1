@@ -12,7 +12,7 @@
         </div>
         <ul class="left__menu">
             <li class="left__menuItem">
-                <a href="" class="left__title"><img src="../public/assets/icon-dashboard.svg" alt="">Dashboard</a>
+                <a href="index.php" class="left__title"><img src="../public/assets/icon-dashboard.svg" alt="">New Bill</a>
             </li>
             <li class="left__menuItem">
                 <div class="left__title"><img src="../public/assets/icon-tag.svg" alt="">Products<img class="left__iconDown" src="../public/assets/arrow-down.svg" alt=""></div>
@@ -57,10 +57,16 @@
             <li class="left__menuItem">
                 <a href="?act=rating&show" class="left__title"><img src="../public/assets/icon-book.svg" alt="">Rating</a>
             </li>
-
+            <li class="left__menuItem">
+                <div class="left__title"><img src="../public/assets/icon-user.svg" alt="">Statistical<img class="left__iconDown" src="../public/assets/arrow-down.svg" alt=""></div>
+                <div class="left__text">
+                    <?php require 'statistical/category-con.php' ?>
+                </div>
+            </li>
             <li class="left__menuItem">
                 <a href="" class="left__title"><img src="../public/assets/icon-logout.svg" alt="">Logout</a>
             </li>
+
         </ul>
     </div>
 </div>

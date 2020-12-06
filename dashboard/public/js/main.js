@@ -30,3 +30,14 @@ window.addEventListener("load", event => {
         }
     };
 })
+function confirmDel() 
+{
+    var result = confirm(" Xác nhận xoá ? ");
+    if(result == true){
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}

@@ -12,7 +12,7 @@
 
 <body>
 
-    <div class="right__cards">
+<div class="right__cards">
         <a class="right__card" href="view_product.html">
             <div class="right__cardTitle">Products</div>
             <div class="right__cardNumber">72</div>
@@ -35,7 +35,7 @@
         </a>
     </div>
     <div class="right__table">
-        <p class="right__tableTitle">List Category</p>
+        <p class="right__tableTitle">Quantity Below 10</p>
         <div class="right__tableWrapper">
             <?PHP
             if (!empty($data)) {
@@ -43,11 +43,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID Category</th>
-                            <th>Name Category</th>
-                            <th>Group Product</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>ID Product</th>
+                            <th>Name Product</th>
+                            <th>ID Product Detail</th>
+                            <th>Quantity</th>
 
                         </tr>
                     </thead>
@@ -57,19 +56,14 @@
 
                         foreach ($data as $value) {         ?>
                             <tr>
-                                <td><?php echo $value->idCategory ?></td>
-                                <td><?php echo $value->nameCategory ?></td>
-                                <td><?php echo $value->idGroupProduct ?></td>
-                                <td class="text-center">
-                                    <a href="?act=category&delete=<?PHP echo $value->idCategory ?>" class="btn-edit">Del</a>
-                                </td>
-                                <td>
-                                    <a href="?act=category&edit=<?PHP echo $value->idCategory ?>" class="btn-edit">Edit</a>
-                                </td>
+                                <td><?php echo $value->idProduct ?></td>
+                                <td><?php echo $value->nameProduct ?></td>
+                                <td><?php echo $value->idProductDetail ?></td>
+                                <td><?php echo $value->quantity?></td>
                             </tr>
                         <?php }
                     } else { ?>
-                        <h1> Hiện không có dữ liệu trong bảng</h1>
+                        <h1> Không có số liệu </h1>
 
 
 
@@ -77,6 +71,10 @@
                     </tbody>
                 </table>
         </div>
+        <a href="?act=products" class="right__tableMore">
+            <p>Xem tất cả các sản phẩm</p> <img src="../public/assets/arrow-right-black.svg" alt="">
+        </a>
+    </div>
     </div>
 </body>
 

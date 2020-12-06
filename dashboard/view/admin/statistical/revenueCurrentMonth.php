@@ -12,7 +12,7 @@
 
 <body>
 
-    <div class="right__cards">
+<div class="right__cards">
         <a class="right__card" href="view_product.html">
             <div class="right__cardTitle">Products</div>
             <div class="right__cardNumber">72</div>
@@ -35,7 +35,7 @@
         </a>
     </div>
     <div class="right__table">
-        <p class="right__tableTitle">List Category</p>
+        <p class="right__tableTitle">Revenue in <script> var d = new Date(); document.write( d.getMonth() ) </script> </p>
         <div class="right__tableWrapper">
             <?PHP
             if (!empty($data)) {
@@ -43,33 +43,33 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID Category</th>
-                            <th>Name Category</th>
-                            <th>Group Product</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>STT</th>
+                            <th>Date</th>
+                            <th>Total Day</th>
 
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php
-
+                        $i = 0;
+                        $total = 0;
                         foreach ($data as $value) {         ?>
                             <tr>
-                                <td><?php echo $value->idCategory ?></td>
-                                <td><?php echo $value->nameCategory ?></td>
-                                <td><?php echo $value->idGroupProduct ?></td>
-                                <td class="text-center">
-                                    <a href="?act=category&delete=<?PHP echo $value->idCategory ?>" class="btn-edit">Del</a>
-                                </td>
-                                <td>
-                                    <a href="?act=category&edit=<?PHP echo $value->idCategory ?>" class="btn-edit">Edit</a>
-                                </td>
+                                <td><?php echo $i+1?></td>
+                                <td><?php echo $value->date ?></td>
+                                <td><?php echo $value->totalDay?></td>
+                                <?PHP $total += $value->totalDay ?>
                             </tr>
-                        <?php }
-                    } else { ?>
-                        <h1> Hiện không có dữ liệu trong bảng</h1>
+                        <?php } ?>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Total Current Month : <?PHP echo $total ?></td>
+                        </tr>
+                        
+                   <?PHP } else { ?>
+                        <h1> Không có số liệu </h1>
 
 
 
@@ -77,6 +77,7 @@
                     </tbody>
                 </table>
         </div>
+    </div>
     </div>
 </body>
 
