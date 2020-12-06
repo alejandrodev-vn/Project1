@@ -12,28 +12,7 @@
 
 <body>
 
-<div class="right__cards">
-        <a class="right__card" href="view_product.html">
-            <div class="right__cardTitle">Products</div>
-            <div class="right__cardNumber">72</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-        <a class="right__card" href="view_customers.html">
-            <div class="right__cardTitle">User</div>
-            <div class="right__cardNumber">12</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-        <a class="right__card" href="view_p_category.html">
-            <div class="right__cardTitle">Category</div>
-            <div class="right__cardNumber">4</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-        <a class="right__card" href="view_orders.html">
-            <div class="right__cardTitle">Bill</div>
-            <div class="right__cardNumber">72</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-    </div>
+
     <div class="right__table">
         <p class="right__tableTitle">TOP SELLING PRODUCT</p>
         <div class="right__tableWrapper">
@@ -43,6 +22,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>STT</th>
                             <th>ID Product</th>
                             <th>Name Product</th>
                             <th>ID Product Detail</th>
@@ -53,9 +33,10 @@
 
                     <tbody>
                         <?php
-
+                        $i = 1;
                         foreach ($data as $value) {         ?>
                             <tr>
+                                <td><?PHP echo $i++ ?> </td>
                                 <td><?php echo $value->idProduct ?></td>
                                 <td><?php echo $value->nameProduct ?></td>
                                 <td><?php echo $value->idProductDetail ?></td>

@@ -68,7 +68,7 @@
                                 <td><?php echo $value->size ?></td>
                                 <td><?php echo $value->price ?></td>
                                 <td><?php echo $value->oldPrice ?></td>
-                                <td><img style="width: 50px; heigh:auto;" src="<?php echo  $IMAGE_DIR.$value->imgUrl ?>"></td>
+                                <td><img style="width: 50px; heigh:auto;" src="<?php echo  $IMAGE_DIR . $value->imgUrl ?>"></td>
                                 <td><?php echo $value->quantity ?></td>
                                 <td class="text-center">
                                     <a href="?act=products&deleteDetail=<?PHP echo $value->idProductDetail ?>" class="btn-edit">Del</a>
@@ -95,10 +95,6 @@
                     <a href="?act=products&newDetail=<?PHP echo $idPRD ?>" class="btn-edit">Add new</a>
                 </td>
         </div>
-        <a href="" class="right__tableMore">
-            <p>Xem tất cả các đơn đặt hàng</p> <img src="../public/assets/arrow-right-black.svg" alt="">
-        </a>
-    </div>
     </div>
 </body>
 

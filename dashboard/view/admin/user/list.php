@@ -65,19 +65,19 @@
                         foreach ($data as $value) {         ?>
                             <tr>
                                 <td><?php echo $value->idUser ?></td>
-                                <td><?php echo $value->fullName?></td>
+                                <td><?php echo $value->fullName ?></td>
                                 <td><?php echo $value->email ?></td>
                                 <td><?php echo $value->address ?></td>
-                                <td><?php echo $value->phoneNumber?></td>
+                                <td><?php echo $value->phoneNumber ?></td>
                                 <td><?php echo $value->dateOfBirth ?></td>
-                                <td><?php echo $value->username?></td>
-                                <td><?php echo $value->password?></td>
-                                <td><?php echo $value->idRole?></td>
-                                <td class="text-center">                                  
-                                <a href="?act=user&delete=<?PHP echo $value->idUser ?>" class="btn-edit">Del</a>                         
+                                <td><?php echo $value->username ?></td>
+                                <td><?php echo $value->password ?></td>
+                                <td><?php echo $value->idRole ?></td>
+                                <td class="text-center">
+                                    <a href="?act=user&delete=<?PHP echo $value->idUser ?>" class="btn-edit">Del</a>
                                 </td>
                                 <td>
-                                <a  href="?act=user&edit=<?PHP echo $value->idUser ?>" class="btn-edit">Edit</a>
+                                    <a href="?act=user&edit=<?PHP echo $value->idUser ?>" class="btn-edit">Edit</a>
                                 </td>
                             </tr>
                         <?php }
@@ -90,10 +90,6 @@
                     </tbody>
                 </table>
         </div>
-        <a href="" class="right__tableMore">
-            <p>Xem tất cả các đơn đặt hàng</p> <img src="../public/assets/arrow-right-black.svg" alt="">
-        </a>
-    </div>
     </div>
 </body>
 

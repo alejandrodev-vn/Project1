@@ -181,10 +181,10 @@ class Database
     }
     public function getTopSelling()
     {
-        $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail, COUNT( bd.idProductDetail) as "countSell" 
+        $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail, SUM( bd.quantity) as "countSell" 
                 FROM products as prd, productdetail as pd, billdetail as bd 
                 WHERE prd.idProduct = pd.idProduct && bd.idProductDetail = pd.idProductDetail 
-                GROUP BY prd.idProduct ,prd.nameProduct ORDER BY count(bd.idProductDetail) DESC limit 10';
+                GROUP BY prd.idProduct ,prd.nameProduct ORDER BY countSell DESC limit 10';
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_object($result)) {
@@ -213,7 +213,7 @@ class Database
         $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail,pd.quantity
                 FROM products as prd, productdetail as pd
                 WHERE prd.idProduct = pd.idProduct && pd.quantity <= 10
-                GROUP BY prd.idProduct ,prd.nameProduct ORDER BY prd.idProduct ASC ';
+                ORDER BY prd.idProduct ASC ';
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_object($result)) {
@@ -229,7 +229,7 @@ class Database
         $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail,pd.quantity
                 FROM products as prd, productdetail as pd
                 WHERE prd.idProduct = pd.idProduct && pd.quantity >= 30
-                GROUP BY prd.idProduct ,prd.nameProduct ORDER BY prd.idProduct ASC ';
+                ORDER BY prd.idProduct ASC ';
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_object($result)) {

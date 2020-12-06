@@ -12,28 +12,7 @@
 
 <body>
 
-<div class="right__cards">
-        <a class="right__card" href="view_product.html">
-            <div class="right__cardTitle">Products</div>
-            <div class="right__cardNumber">72</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-        <a class="right__card" href="view_customers.html">
-            <div class="right__cardTitle">User</div>
-            <div class="right__cardNumber">12</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-        <a class="right__card" href="view_p_category.html">
-            <div class="right__cardTitle">Category</div>
-            <div class="right__cardNumber">4</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-        <a class="right__card" href="view_orders.html">
-            <div class="right__cardTitle">Bill</div>
-            <div class="right__cardNumber">72</div>
-            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
-        </a>
-    </div>
+
     <div class="right__table">
         <p class="right__tableTitle">Revenue in <script> var d = new Date(); document.write( d.getMonth() ) </script> </p>
         <div class="right__tableWrapper">
@@ -52,11 +31,11 @@
 
                     <tbody>
                         <?php
-                        $i = 0;
+                        $i = 1;
                         $total = 0;
                         foreach ($data as $value) {         ?>
                             <tr>
-                                <td><?php echo $i+1?></td>
+                                <td><?php echo $i++?></td>
                                 <td><?php echo $value->date ?></td>
                                 <td><?php echo $value->totalDay?></td>
                                 <?PHP $total += $value->totalDay ?>

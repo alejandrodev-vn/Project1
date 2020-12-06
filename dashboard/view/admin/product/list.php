@@ -63,19 +63,14 @@
                                     <a href="?act=products&detail=<?PHP echo $value->idProduct ?>" class="btn-edit">Detail</a>
                                 </td>
                             </tr>
-                        <?php }
-                    } else { ?>
-                        <h1> Hiện không có dữ liệu trong bảng</h1>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?PHP  } else { ?>
+                <h1> Hiện không có dữ liệu trong bảng</h1>
 
         </div>
-
-
-
     <?PHP } ?>
-    </tbody>
-    </table>
-    </div>
-    </div>
     </div>
 </body>
 

@@ -303,7 +303,7 @@ if (isset($_GET['act'])) {
             break;
         case 'bill':
             $table = $_GET['act'];
-            $data = $db->getObjectSelect($table,1,'status');
+            $data = $db->getObjectSelect($table,0,'status');
             $VIEW_NAME = '../view/admin/bill/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
