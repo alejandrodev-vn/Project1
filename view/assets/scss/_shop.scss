@@ -108,6 +108,15 @@
                             font-weight:500;
                             display:block;
                         }
+                        &.discount {
+                            background: #ff9438;
+                            align-items: center;
+                            border-radius: 2px;
+                            line-height: 24px;
+                            margin-left: 8px;
+                            padding: 3px 1px;
+                            font-size: 15px;
+                        }
                       
                     }
                 }
@@ -336,6 +345,7 @@ aside{
                             background: url(../img/adapt_icon/icon_X.png) no-repeat;
                             width: 16px;
                             height: 16px;
+                            float: right;
                         }
                     }
                 }

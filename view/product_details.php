@@ -54,26 +54,20 @@
                         </span>
                         <div class="single_product_price">
                             <span class="new-price">$<?= $data[0]['price'];?></span>
+                            <span class="discount"> -<?= $data[0]['note'];?>%</span>
                             <span class="old-price">$<?= $data[0]['oldPrice'];?></span>
                         </div>
                         <p>
                             <?= $data[0]['description'];?>
                         </p>
                         <div class="product_color text-lg-left">
-                            <p>Choose Size:</p>
+                            <p <?php if($data[0]['size']=="") echo 'style="display:none;"';else echo 'style="display:block;"'  ?> >Choose Size:</p>
                             <div class="choose__size">
-                                <a href="#" class="choose__size-item">M
+                                <?php foreach($data as $data){ if($data['size']!==""){ ?>
+                                <a href="#" class="choose__size-item"><?= $data['size']?>
                                     <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/attribute.svg" alt="active">
                                 </a>
-                                <a href="#" class="choose__size-item">L
-                                <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/attribute.svg" alt="active">
-                                </a>
-                                <a href="#" class="choose__size-item">XL
-                                <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/attribute.svg" alt="active">
-                                </a>
-                                <a href="#" class="choose__size-item">2XL
-                                <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/attribute.svg" alt="active">
-                                </a>
+                                <?php }}?>
                             </div>
                         </div>
                         <div class="card_area">

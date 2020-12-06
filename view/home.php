@@ -97,7 +97,7 @@
                                     </div>
                                     <div class="sold">
                                         <div class="percent"></div>
-                                        <div class="text"><p>Còn lại: <?= $val['quantity'];?></p></div>
+                                        <div class="text"><p>Rest: <?= $val['quantity'];?></p></div>
                                     </div>
                                     <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                                 </div>
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="sold">
                                     <div class="percent"></div>
-                                    <div class="text"><p>Còn lại: <?= $val['quantity']; ?></p></div>
+                                    <div class="text"><p>Rest: <?= $val['quantity']; ?></p></div>
                                 </div>
                                 <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                             </div> 

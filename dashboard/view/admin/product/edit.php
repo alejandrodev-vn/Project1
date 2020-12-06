@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <h2>Product: <?= $getName ?> </h2>
         <!-- Trigger the modal with a button -->

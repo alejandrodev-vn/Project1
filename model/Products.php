@@ -7,10 +7,10 @@
         return $data;
     }
     function getProductsPoppular($conn){
-        $sql = "SELECT *, SUM(quantity) AS rest
-                FROM products inner join productdetail WHERE products.idProduct= productdetail.idProduct
-                GROUP BY nameProduct
-                ORDER BY rest ASC";
+        $sql = "SELECT DISTINCT *, SUM(billdetail.quantity) AS times
+        FROM bill inner join billdetail on bill.idBill= billdetail.idBill inner join productdetail on billdetail.idProductDetail = productdetail.idProductDetail inner join products on products.idProduct = productdetail.idProduct
+        GROUP BY productdetail.idProduct
+        ORDER BY times DESC LIMIT 6";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -28,7 +28,7 @@
 
     function getAllProduct($conn) {
         // $sql = "SELECT idProduct, nameProduct,  FROM products";  WHERE products.`flashSale` = 1"
-        $sql = "SELECT products.`idProduct` , products.`nameProduct`,productDetail.`idProductDetail`,productDetail.`price` , productDetail.`oldPrice`,products.`imgUrl` ,productDetail.`quantity`, products.`date` FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` GROUP BY idProduct";
+        $sql = "SELECT products.`idProduct` , products.`nameProduct`,productDetail.`idProductDetail`,productDetail.`price` , productDetail.`oldPrice`,products.`imgUrl` ,productDetail.`quantity`, products.`date`, products.`note` FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` GROUP BY idProduct";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();

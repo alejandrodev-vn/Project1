@@ -160,10 +160,11 @@
                                                 <div class="price">
                                                     <span class="new-price">$<?=$product['price'];?></span>
                                                     <span class="old-price">$<?=$product['oldPrice'];?></span>
+                                                    <span class="discount">-<?= $product['note']; ?>%</span>
                                                 </div>
                                                 <div class="sold">
                                                     <div class="percent"></div>
-                                                    <div class="text"><p>Còn lại: 2</p></div>
+                                                    <div class="text"><p>Rest: <?= $product['quantity']; ?></p></div>
                                                 </div>
                                                 <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                                             </div> 

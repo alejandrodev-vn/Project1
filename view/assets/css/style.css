@@ -7409,7 +7409,7 @@ del {
   }
 }
 .product_image_area .single_product_text p {
-  margin-top: 50px;
+  margin-top: 20px;
   color: #707070;
 }
 @media (max-width: 991px) {
@@ -7491,6 +7491,10 @@ input:focus {
   font-size: 18px;
   font-weight: thin;
   text-decoration: line-through;
+}
+.single_product_price .discount {
+  margin-left: 8px;
+  font-size: 15px;
 }
 
 .product_img_slide {
@@ -8047,6 +8051,15 @@ input:focus {
   line-height: 31px;
   font-weight: 500;
   display: block;
+}
+.product-wrapper .single-product-items .product-content .price span.discount {
+  background: #ff9438;
+  align-items: center;
+  border-radius: 2px;
+  line-height: 24px;
+  margin-left: 8px;
+  padding: 3px 1px;
+  font-size: 15px;
 }
 .product-wrapper .single-product-items .product-content .sold {
   width: 70%;
