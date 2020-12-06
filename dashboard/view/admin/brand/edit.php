@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <h2>Brand: <?= $getName ?> </h2>
+        <h2>Edit Brand: <?= $getName ?> </h2>
 
         <br><br><br>
         <form action="" method="post">

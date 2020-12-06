@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <h2>Group Product: <?= $getName ?> </h2>
+        <h2>Edit Group Product: <?= $getName ?> </h2>
 <br><br><br>
         <form action="" method="post">
             <div class="form-group">

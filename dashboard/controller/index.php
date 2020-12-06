@@ -2,6 +2,10 @@
 
 require_once("../model/function.php");
 $db = new Database();
+$countProducts= $db->countData('idProduct','products');
+$countUser= $db->countData('idUser','user');
+$countCategory= $db->countData('idCategory','category');
+$countBill= $db->countData('idBill','bill');
 include_once("../core/app.php");
 if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
     $data = $_SESSION['username'];

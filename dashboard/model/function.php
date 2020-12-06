@@ -195,6 +195,19 @@ class Database
         }
         return false;
     }
+    public function countData($id, $table)
+    {
+        $sql = 'SELECT COUNT('.$id.') as count FROM '.$table;
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        return false;
+    }
     public function getLowQuantity()
     {
         $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail,pd.quantity

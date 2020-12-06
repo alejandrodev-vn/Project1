@@ -12,10 +12,7 @@
 
 <body>
     <div class="container">
-        <h2>Product: <?= $getName ?> </h2>
-        <!-- Trigger the modal with a button -->
-
-        <h2>Edit Product</h2>
+        <h2>Edit Product: <?= $getName ?> </h2>
         <br><br><br>
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">

@@ -15,7 +15,28 @@
                 <div class="right">
                     <div class="right__content">
                     <div class="right__title">DASHBOARD</div>
-                    
+                    <div class="right__cards">
+        <a class="right__card" href="view_product.html">
+            <div class="right__cardTitle">Quantity</div>
+            <div class="right__cardNumber"><?= $countProducts[0]['count'] ?></div>
+            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
+        </a>
+        <a class="right__card" href="view_customers.html">
+            <div class="right__cardTitle">User</div>
+            <div class="right__cardNumber"><?= $countUser[0]['count'] ?></div>
+            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
+        </a>
+        <a class="right__card" href="view_p_category.html">
+            <div class="right__cardTitle">Category</div>
+            <div class="right__cardNumber"><?= $countCategory[0]['count'] ?></div>
+            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
+        </a>
+        <a class="right__card" href="view_orders.html">
+            <div class="right__cardTitle">Bill</div>
+            <div class="right__cardNumber"><?= $countBill[0]['count'] ?></div>
+            <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
+        </a>
+    </div>
                         <?php require $VIEW_NAME; ?>
                 </div>
             </div>

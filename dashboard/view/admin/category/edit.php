@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <h2>Category <?= $getName ?> </h2>
+        <h2>Edit Category <?= $getName ?> </h2>
         <!-- Trigger the modal with a button -->
 
         <div class="modal-body">
