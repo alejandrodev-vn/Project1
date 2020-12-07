@@ -154,7 +154,7 @@
                                             <div class="product-img">
                                                 <img src="<?php echo $product['imgUrl'] ?>" alt="product">
                                                 <div class="img-cap">
-                                                    <a href="?act=cart&id=<?=$product['idProductDetail'];?>">Add to cart</a>
+                                                    <a href="../controller/cart.php?id=<?=$product['idProductDetail'];?>">Add to cart</a>
                                                 </div>
                                                 <div class="favorit-items">
                                                     <span class="flaticon-heart"></span>

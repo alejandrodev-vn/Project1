@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="../view/assets/css/nice-select.css">
     <link rel="stylesheet" href="../view/assets/css/style.css">
 </head>
-
 <body>
     <!--? Preloader Start -->
     <!-- <div id="preloader-active">

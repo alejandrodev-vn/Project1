@@ -1,4 +1,7 @@
 <?php
+include "../core/app.php";
+check_role1();
+
 require_once("../model/function.php");
 $db = new Database();
 include_once("../core/app.php");

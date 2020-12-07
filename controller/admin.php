@@ -1,5 +1,7 @@
 <?php
+
     include_once "../view/header.php";
+    
     if(isset($_GET["act"])){
         $act= $_GET["act"];
         switch($act){            
