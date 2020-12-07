@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
 include "../core/app.php";
 check_role1();
-=======
->>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
 
 require_once("../model/function.php");
 $db = new Database();
