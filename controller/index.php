@@ -1,11 +1,18 @@
 <?php
     session_start();
+<<<<<<< HEAD
     require_once ("../model/connect.php");
     require_once ("../model/shop.php");
     
+=======
+    require_once("../model/connect.php");
+    require_once("../model/shop.php");
+
+>>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
 //    connect();
         $conn = connect();
-    include "../view/header.php";
+        $IMAGE_DIR =  "../images/";
+    include_once "../view/header.php";
     if(isset($_GET["act"])){
         $act= $_GET["act"];
         switch($act){
@@ -42,8 +49,11 @@
                     }else {
                         $pro=0;
                     }
+<<<<<<< HEAD
                     // echo"<pre>";
                     // print_r($data);
+=======
+>>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
                     include "../view/product_details.php";
                     
                     break;
@@ -121,7 +131,8 @@
         include "../model/ProductDetail.php";
         include "../model/Products.php";
         $data = getFlashSale($conn);
-        // print_r($data);
+        $newProducts = getProductsNew($conn);
+        $bestSeller = getProductsPoppular($conn);
         $products = getAllProduct($conn);
         include_once "../view/home.php";
     }

@@ -1,9 +1,9 @@
 .product-wrapper{
     h3{
         margin-left: 10px;
-        min-height: 50px;
-        line-height: 20px;
-        text-align: left;
+        min-height: 34px;
+        line-height: 17px;
+        text-align: center;
         a{
             font-size: 40px;
             color: #ff9438bf;
@@ -17,8 +17,10 @@
             margin-bottom:19px;
             min-height: 190px;
             position: relative;
+            background-color: rgb(246, 245, 243);
             img {
                 width:100%;
+                object-fit: contain;
                }
             //hover Show Smg
             .img-cap{
@@ -28,11 +30,12 @@
                 opacity: 0;
                 visibility: hidden;
                 @include transition(.4s);
-                span{
+                a{
                     color: #fff;
                     background: linear-gradient(90deg, #ff8e96 35%, #ff9438bf 100%);
-                    padding: 20px 0;
+                    padding: 10px 0;
                     display: block;
+                    font-size: 15px;
                     cursor: pointer;
                 }
             }
@@ -59,6 +62,11 @@
 
                 h3 {
                     a{
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2; // số dòng muốn hiển thị
+                        -webkit-box-orient: vertical;
+                        text-overflow: ellipse;
+                        overflow: hidden;
                         color:#444444;
                         font-weight:thin;
                         font-size:15px;
@@ -87,18 +95,27 @@
                     span{
                         &.new-price{
                             color:#ff9438;
-                            font-size:20px;
+                            font-size:17px;
                             font-weight:700;
                             display:block;
                         }
                         &.old-price{
                             color:gray;
                             text-decoration: line-through;
-                            font-size: 14px;
+                            font-size: 13px;
                             padding-left: 5px;
                             line-height: 31px;
                             font-weight:500;
                             display:block;
+                        }
+                        &.discount {
+                            background: #ff9438;
+                            align-items: center;
+                            border-radius: 2px;
+                            line-height: 24px;
+                            margin-left: 8px;
+                            padding: 3px 1px;
+                            font-size: 15px;
                         }
                       
                     }

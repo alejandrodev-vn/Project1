@@ -14,7 +14,7 @@
 
 
     <div class="right__table">
-        <p class="right__tableTitle">List Brands</p>
+        <p class="right__tableTitle">TOP SELLING PRODUCT</p>
         <div class="right__tableWrapper">
             <?PHP
             if (!empty($data)) {
@@ -22,31 +22,29 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID Brand</th>
-                            <th>Name Brand</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>STT</th>
+                            <th>ID Product</th>
+                            <th>Name Product</th>
+                            <th>ID Product Detail</th>
+                            <th>Lượt mua</th>
 
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php
-
+                        $i = 1;
                         foreach ($data as $value) {         ?>
                             <tr>
-                                <td><?php echo $value->idThuongHieu ?></td>
-                                <td><?php echo $value->nameBrand ?></td>
-                                <td class="text-center">                                  
-                                <a href="?act=brand&delete=<?PHP echo $value->idThuongHieu ?>" class="btn-edit">Del</a>                         
-                                </td>
-                                <td>
-                                <a  href="?act=brand&edit=<?PHP echo $value->idThuongHieu ?>" class="btn-edit">Edit</a>
-                                </td>
+                                <td><?PHP echo $i++ ?> </td>
+                                <td><?php echo $value->idProduct ?></td>
+                                <td><?php echo $value->nameProduct ?></td>
+                                <td><?php echo $value->idProductDetail ?></td>
+                                <td><?php echo $value->countSell?></td>
                             </tr>
                         <?php }
                     } else { ?>
-                        <h1> Hiện không có dữ liệu trong bảng</h1>
+                        <h1> Không có số liệu </h1>
 
 
 

@@ -117,7 +117,7 @@
             }
         }
         p{
-            margin-top: 50px;
+            margin-top: 20px;
             color: #707070;
             @media #{$tab}{
                 margin-top:20px;
@@ -191,7 +191,14 @@ input:focus {
         font-weight: thin;
         text-decoration: line-through;
     }
+    .discount {
+
+        margin-left: 8px;
+        font-size: 15px;
+    }
+   
 }
+
 .product_img_slide{
     width: 100%;
     display: inline-flex;
@@ -207,9 +214,9 @@ input:focus {
         .single_product_img{
             border: 1px solid #ff9438;
             padding: 0;
+            background-color: rgb(246, 245, 243);
             &:hover{
                 border:2px solid #ff9438;
-               filter: brightness(130%);
                padding: 5px;
                transition: 0.2s;
             }

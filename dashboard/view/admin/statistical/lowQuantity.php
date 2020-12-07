@@ -14,39 +14,37 @@
 
 
     <div class="right__table">
-        <p class="right__tableTitle">List Brands</p>
+        <p class="right__tableTitle">Quantity Below 10</p>
         <div class="right__tableWrapper">
             <?PHP
             if (!empty($data)) {
             ?>
-                <table>
+               <table>
                     <thead>
                         <tr>
-                            <th>ID Brand</th>
-                            <th>Name Brand</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>STT</th>
+                            <th>ID Product</th>
+                            <th>Name Product</th>
+                            <th>ID Product Detail</th>
+                            <th>Quantity</th>
 
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php
-
+                        <?php  
+                        $i = 1;                     
                         foreach ($data as $value) {         ?>
                             <tr>
-                                <td><?php echo $value->idThuongHieu ?></td>
-                                <td><?php echo $value->nameBrand ?></td>
-                                <td class="text-center">                                  
-                                <a href="?act=brand&delete=<?PHP echo $value->idThuongHieu ?>" class="btn-edit">Del</a>                         
-                                </td>
-                                <td>
-                                <a  href="?act=brand&edit=<?PHP echo $value->idThuongHieu ?>" class="btn-edit">Edit</a>
-                                </td>
+                                <td><?PHP echo $i++ ?></td>
+                                <td><?php echo $value->idProduct ?></td>
+                                <td><?php echo $value->nameProduct ?></td>
+                                <td><?php echo $value->idProductDetail ?></td>
+                                <td><?php echo $value->quantity?></td>
                             </tr>
                         <?php }
                     } else { ?>
-                        <h1> Hiện không có dữ liệu trong bảng</h1>
+                        <h1> Không có số liệu </h1>
 
 
 
@@ -54,6 +52,9 @@
                     </tbody>
                 </table>
         </div>
+        <a href="?act=products" class="right__tableMore">
+            <p>Xem tất cả các sản phẩm</p> <img src="../public/assets/arrow-right-black.svg" alt="">
+        </a>
     </div>
     </div>
 </body>

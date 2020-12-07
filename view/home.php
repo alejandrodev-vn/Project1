@@ -81,7 +81,10 @@
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div class="single-flash-sale mb-30 text-center">
                                 <div class="flash-sale-img">
-                                    <img src="<?= $val['imgUrl']; ?>" alt="collection">
+                                    <img src="<?= $IMAGE_DIR.$val['imgUrl']; ?>" alt="collection">
+                                    <div class="flash-sale-cart">
+                                    <span>Add to cart</span>
+                                </div>
                                 </div>
                                 <div class="flash-sale-caption">
                                     <h3 style=" overflow: hidden; white-space: nowrap; text-overflow: ellipsis; "><a title="<?= $val['nameProduct'] ?>" href="?act=productDetail&id=<?= $val['idProduct'];?>"><?= $val['nameProduct'] ?></a></h3>
@@ -90,10 +93,11 @@
                                     <div class="price">
                                         <span class="new-price">$ <?= $val['price']; ?></span>
                                         <span class="old-price">$ <?= $val['oldPrice']; ?></span>
+                                        <span class="discount">-<?= $val['note']; ?>%</span>
                                     </div>
                                     <div class="sold">
                                         <div class="percent"></div>
-                                        <div class="text"><p>Còn lại: <?= $val['quantity'];?></p></div>
+                                        <div class="text"><p>Rest: <?= $val['quantity'];?></p></div>
                                     </div>
                                     <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                                 </div>
@@ -150,11 +154,11 @@
                     </div>
                 </div>
                 <div class="row">
-                <?php foreach($products as $val ) {?>
+                <?php foreach($bestSeller as $val ) {?>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="single-popular-items mb-50 text-center">
                             <div class="popular-img">
-                                <img src="<?= $val['imgUrl']; ?>" alt="Best Seller">
+                                <img src="<?= $IMAGE_DIR.$val['imgUrl']; ?>" alt="Best Seller">
                                 <div class="img-cap">
                                     <span>Add to cart</span>
                                 </div>
@@ -169,10 +173,11 @@
                                 <div class="price">
                                     <span class="new-price">$ <?= $val['price']; ?></span>
                                     <span class="old-price">$ <?= $val['oldPrice']; ?></span>
+                                    <span class="discount">-<?= $val['note']; ?>%</span>
                                 </div>
                                 <div class="sold">
                                     <div class="percent"></div>
-                                    <div class="text"><p>Còn lại: <?= $val['quantity']; ?></p></div>
+                                    <div class="text"><p>Rest: <?= $val['quantity']; ?></p></div>
                                 </div>
                                 <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                             </div> 
@@ -183,7 +188,7 @@
                 <!-- Button -->
                 <div class="row justify-content-center">
                     <div class="room-btn pt-70">
-                        <a href="catagori.php" class="btn view-btn1">View More Products</a>
+                        <a href="?act=shop" class="btn view-btn1">View More Products</a>
                     </div>
                 </div>
             </div>
@@ -198,32 +203,22 @@
                             New Arrival
                         </h2>
                     </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="watch-details">
-                            <h3>CLOUD PRINT T-SHIRT</h3>
-                            <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                            <a href="?act=productDetail" class="btn">Show T-Shirt</a>
+                    <?php foreach( $newProducts as $newProduct){?>
+                        <div class="col-lg-3 col-md-6 col-sm-10">
+                            <div class="choice-watch-img">
+                                <img src="<?= $IMAGE_DIR.$newProduct['imgUrl']?>" alt="new-Product">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-10">
-                        <div class="choice-watch-img">
-                            <img src="../view/assets/img/gallery/louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Frontview.webp" alt="">
+                        <div class="col-lg-3 col-md-6 pt-5">
+                            <div class="watch-details">
+                                <h3 title="<?= $newProduct['nameProduct']?>"><?= $newProduct['nameProduct']?></h3>
+                                <p style="display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;text-overflow: ellipse;overflow: hidden;">
+                                    <?= $newProduct['description']?>
+                                </p>
+                                <a href="?act=productDetail&id=<?= $newProduct['idProduct']?>" class="btn">Show T-Shirt</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-lg-4 col-md-4 col-sm-10">
-                        <div class="choice-watch-img">
-                            <img src="../view/assets/img/gallery/louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Frontview.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="watch-details">
-                            <h3>CLOUD PRINT T-SHIRT</h3>
-                            <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                            <a href="?act=productDetail" class="btn">Show T-Shirt</a>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

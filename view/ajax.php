@@ -90,7 +90,7 @@
     }
     $products = '';
     foreach($getProduct as $product){
-       $products .= ?>
+       $products .=  ?>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
             <div class="single-product-items mb-50 text-center">
                 <div class="product-img">

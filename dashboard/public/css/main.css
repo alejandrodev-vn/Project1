@@ -19,7 +19,14 @@
   -webkit-appearance: none;
   margin: 0;
 }
-
+img{
+  max-width: 100%;
+}
+textarea {
+  border: 1px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 body {
   font-family: "Muli", sans-serif;
   background-color: #E2DFF2;
@@ -245,9 +252,11 @@ body {
 .left__menuItem.open .left__title {
   background-color: #f5f6fa;
 }
-
+.left__menuItem .left__text{
+  display: none;
+}
 .left__menuItem.open .left__text {
-  min-height: 70px;
+  display: block;
   padding-top: 10px;
 }
 
@@ -288,7 +297,6 @@ body {
   display: flex;
   flex-direction: column;
   color: #10182F;
-  height: 0px;
   overflow: hidden;
   padding: 0 25px;
   transition: all 0.4s ease;
@@ -1210,6 +1218,10 @@ body {
 }
 
 input[type="text"]{
+  width: 70%;
+  border-radius: 9999px;
+}
+select.form-control{
   width: 70%;
   border-radius: 9999px;
 }

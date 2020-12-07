@@ -99,7 +99,6 @@ class Database
         } else
             die('Không thể có nhiều hơn 1 khóa chính và id truyền vào phải là số');
         $sql = 'SELECT * FROM ' . $table . ' WHERE ' . $where;
-
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_object($result)) {
                 $data[] = $row;
@@ -172,12 +171,90 @@ class Database
         } else
             return false;
     }
-    public function save_file($fieldname='', $target_dir=''){
+    public function save_file($fieldname = '', $target_dir = '')
+    {
         $file_uploaded = $_FILES[$fieldname];
         $file_name = basename($file_uploaded["name"]);
         $target_path = $target_dir . $file_name;
         move_uploaded_file($file_uploaded["tmp_name"], $target_path);
         return $file_name;
+    }
+    public function getTopSelling()
+    {
+        $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail, SUM( bd.quantity) as "countSell" 
+                FROM products as prd, productdetail as pd, billdetail as bd 
+                WHERE prd.idProduct = pd.idProduct && bd.idProductDetail = pd.idProductDetail 
+                GROUP BY prd.idProduct ,prd.nameProduct ORDER BY countSell DESC limit 10';
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_object($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        return false;
+    }
+    public function countData($id, $table)
+    {
+        $sql = 'SELECT COUNT('.$id.') as count FROM '.$table;
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        return false;
+    }
+    public function getLowQuantity()
+    {
+        $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail,pd.quantity
+                FROM products as prd, productdetail as pd
+                WHERE prd.idProduct = pd.idProduct && pd.quantity <= 10
+                ORDER BY prd.idProduct ASC ';
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_object($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        return false;
+    }
+    public function getHighQuantity()
+    {
+        $sql = 'SELECT prd.idProduct, prd.nameProduct,pd.idProductDetail,pd.quantity
+                FROM products as prd, productdetail as pd
+                WHERE prd.idProduct = pd.idProduct && pd.quantity >= 30
+                ORDER BY prd.idProduct ASC ';
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_object($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        return false;
+    }
+    public function getRevenueCurrentMonth()
+    {
+        $sql = 'SELECT DATE(b.date) as "date",SUM(b.total) as "totalDay"
+                FROM bill as b
+                WHERE MONTH(DATE(b.date)) = MONTH(CURRENT_DATE())
+                GROUP BY DATE(b.date) 
+                ORDER BY b.date ASC';
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_object($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        return false;
     }
     public function __destruct()
     {

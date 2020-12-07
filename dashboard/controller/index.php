@@ -1,10 +1,22 @@
 <?php
+<<<<<<< HEAD
 include "../core/app.php";
 check_role1();
+=======
+>>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
 
 require_once("../model/function.php");
 $db = new Database();
+$countProducts= $db->countData('idProduct','products');
+$countUser= $db->countData('idUser','user');
+$countCategory= $db->countData('idCategory','category');
+$countBill= $db->countData('idBill','bill');
 include_once("../core/app.php");
+if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
+    $data = $_SESSION['username'];
+    echo $data->idUser;
+}
+
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -36,6 +48,7 @@ if (isset($_GET['act'])) {
                         'imgUrl' => $img,
                         'flashSale' => $_POST['flashSale'],
                         'note' => $_POST['note'],
+                        'description' => $_POST['description']
                     ];
                     if ($db->update($table, $data, $id, 'idProduct'))
                         $message = "Cập nhật thành công";
@@ -56,6 +69,7 @@ if (isset($_GET['act'])) {
                         'imgUrl' => $img,
                         'flashSale' => $_POST['flashSale'],
                         'note' => $_POST['note'],
+                        'description' => $_POST['description']
                     ];
                     if ($db->insert($table, $data))
                         $message = "Cập nhật thành công";
@@ -294,7 +308,7 @@ if (isset($_GET['act'])) {
             break;
         case 'bill':
             $table = $_GET['act'];
-            $data = $db->getObject($table);
+            $data = $db->getObjectSelect($table,0,'status');
             $VIEW_NAME = '../view/admin/bill/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -303,6 +317,14 @@ if (isset($_GET['act'])) {
                 } else $message = "Không thể thực hiện";
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 header("Refresh:0; url=?act=bill");
+            }
+            if (isset($_GET['deleteNoConfirm'])) {
+                $id = (int)$_GET['deleteNoConfirm'];
+                if ($db->delete($table, $id, 'idBill')) {
+                    $message = "Xoá thành công";
+                } else $message = "Không thể thực hiện";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+                header("Refresh:0; url=index.php");
             }
             if (isset($_GET['detail'])) {
                 $id = (int)$_GET['detail'];
@@ -316,6 +338,17 @@ if (isset($_GET['act'])) {
                 } else $message = "Không thể thực hiện";
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 header("Refresh:0; url=?act=bill");
+            }
+            if (isset($_GET['confirm'])) {
+                $id = (int)$_GET['confirm'];
+                $data = [
+                    'status' => '1'
+                ];
+                if ($db->update($table, $data, $id, 'idBill')) {
+                    $message = "Cập nhật thành công";
+                } else $message = "Cập nhật thành công";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+                header("Refresh:0; url=index.php");
             }
 
             break;
@@ -385,11 +418,37 @@ if (isset($_GET['act'])) {
                 }
             }
         break;
+        case 'topSelling': 
+            { 
+                $data = $db->getTopSelling();
+                $VIEW_NAME='../view/admin/statistical/topSelling.php';
+            }
+        break;
+        case 'lowQuantity': 
+            { 
+                $data = $db->getLowQuantity();
+                $VIEW_NAME='../view/admin/statistical/lowQuantity.php';
+            }
+        break;
+        case 'highQuantity': 
+            { 
+                $data = $db->getHighQuantity();
+                $VIEW_NAME='../view/admin/statistical/HighQuantity.php';
+            }
+        break;
+        case 'revenue': 
+            { 
+                $data = $db->getRevenueCurrentMonth();
+                $VIEW_NAME='../view/admin/statistical/revenueCurrentMonth.php';
+            }
+        break;
         default:
             require '../view/admin/home/home.php';
             break;
     }
 } else {
+    $table = "bill";
+    $data = $db->getObjectSelect($table,0,'status');
     $VIEW_NAME = '../view/admin/home/home.php';
 }
 include_once('../view/admin/layout.php');

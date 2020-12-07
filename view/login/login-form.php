@@ -56,7 +56,7 @@
                                         <button type="submit" value="submit" class="submit_btn" name="login">
                                             log in
                                         </button>
-                                        <a class="lost_pass" href="#">forget password?</a>
+                                        <a class="lost_pass" href="?act=forgot_password">forget password?</a>
                                         
                                     </div>
                                 </form>

@@ -18,13 +18,6 @@
         <div class="container">
             <div class="row">
                 <h3><a href="?act=shop">Shop</a></h3>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">All Products</a></li>
-                        <li class="breadcrumb-item"><a href="#">Louis Vuitton</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Top</li>
-                    </ol>
-                </nav>
             </div>
             <div class="row">
                 <div class="col-xl-12 col-md-12">
@@ -152,7 +145,7 @@
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                                         <div class="single-product-items mb-50 text-center">
                                             <div class="product-img">
-                                                <img src="<?php echo $product['imgUrl'] ?>" alt="product">
+                                                <img src="<?= $IMAGE_DIR.$product['imgUrl'] ?>" alt="product">
                                                 <div class="img-cap">
                                                     <a href="../controller/cart.php?id=<?=$product['idProductDetail'];?>">Add to cart</a>
                                                 </div>
@@ -167,10 +160,11 @@
                                                 <div class="price">
                                                     <span class="new-price">$<?=$product['price'];?></span>
                                                     <span class="old-price">$<?=$product['oldPrice'];?></span>
+                                                    <span class="discount">-<?= $product['note']; ?>%</span>
                                                 </div>
                                                 <div class="sold">
                                                     <div class="percent"></div>
-                                                    <div class="text"><p>Còn lại: 2</p></div>
+                                                    <div class="text"><p>Rest: <?= $product['quantity']; ?></p></div>
                                                 </div>
                                                 <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                                             </div> 

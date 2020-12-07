@@ -2,7 +2,14 @@
     h3{
         font-size: 40px;
         color: #ff9438bf;
+        line-height: 22px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; // số dòng muốn hiển thị
+        -webkit-box-orient: vertical;
+        text-overflow: ellipse;
+        overflow: hidden;
     }
+    
     
     .single-popular-items{
         .popular-img{
@@ -10,6 +17,9 @@
             border-bottom: 3px solid #ff8e96;
             margin-bottom:19px;
             position: relative;
+            min-height: 250px;
+            max-height: 325px;
+            background-color: rgb(246, 245, 243);
             img {
                 width:100%;
                }
@@ -49,7 +59,8 @@
             }
            }
             .popular-caption{
-
+                min-height: 60px;
+                max-height: 60px;
                 h3 {
                     a{
                         color:#444444;
@@ -79,18 +90,27 @@
                     span{
                         &.new-price{
                             color:#ff9438;
-                            font-size:22px;
+                            font-size:19px;
                             font-weight:700;
                             display:block;
                         }
                         &.old-price{
                             color:gray;
                             text-decoration: line-through;
-                            font-size: 16px;
+                            font-size: 15px;
                             padding-left: 5px;
                             line-height: 31px;
                             font-weight:500;
                             display:block;
+                        }
+                        &.discount {
+                            background: #ff9438;
+                            align-items: center;
+                            border-radius: 2px;
+                            line-height: 24px;
+                            margin-left: 8px;
+                            padding: 3px 1px;
+                            font-size: 15px;
                         }
                       
                     }

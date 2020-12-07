@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 01, 2020 lúc 04:33 AM
+-- Thời gian đã tạo: Th12 02, 2020 lúc 03:01 PM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.4.7
 
@@ -33,6 +33,17 @@ CREATE TABLE `bill` (
   `total` float NOT NULL COMMENT 'Tổng tiền',
   `date` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày nhập'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `bill`
+--
+
+INSERT INTO `bill` (`idBill`, `idUser`, `total`, `date`) VALUES
+(5, 1, 300000, '2020-12-02 00:40:54'),
+(6, 1, 1324120, '2020-12-02 00:40:54'),
+(7, 1, 300000, '2020-12-02 00:40:56'),
+(8, 1, 1324120, '2020-12-02 00:40:56'),
+(9, 1, 300000, '2020-12-02 00:41:03');
 
 -- --------------------------------------------------------
 
@@ -154,8 +165,8 @@ CREATE TABLE `productdetail` (
   `idProduct` int(11) NOT NULL COMMENT 'Mã sản phẩm',
   `color` varchar(50) DEFAULT NULL COMMENT 'Màu sản phẩm',
   `size` varchar(10) DEFAULT NULL COMMENT 'Size',
-  `price` int(30) NOT NULL COMMENT 'Giá',
-  `oldPrice` int(50) NOT NULL COMMENT 'Old price',
+  `price` varchar(50) NOT NULL COMMENT 'Giá',
+  `oldPrice` varchar(50) NOT NULL COMMENT 'Old price',
   `imgUrl` text DEFAULT NULL COMMENT 'Ảnh sản phẩm',
   `quantity` int(50) NOT NULL COMMENT 'Số lượng chi tiết sản phẩm'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -165,10 +176,12 @@ CREATE TABLE `productdetail` (
 --
 
 INSERT INTO `productdetail` (`idProductDetail`, `idProduct`, `color`, `size`, `price`, `oldPrice`, `imgUrl`, `quantity`) VALUES
-(1, 1, 'blue', 'S', 457, 535, NULL, 9),
-(2, 1, 'violet', 'L', 457, 535, NULL, 16),
-(3, 2, 'black', 'Freesize', 885, 999, NULL, 12),
-(4, 3, 'gray', '29', 1350, 1700, NULL, 8);
+(79, 33, 'SkyBlue', 'M', '1,150.00', '1,450.00', 'louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Front view.webp', 15),
+(80, 34, 'Black', 'Free size', '9,500.00', '10,500.00', 'louis-vuitton-sculptural-jacket-ready-to-wear--HJJ75WTCX900_PM2_Front view.webp', 12),
+(81, 35, 'SkyBlue', '36', '2,330.00', '2,900.00', 'louis-vuitton-clouds-90s-slim-pants-ready-to-wear--HJP70WYFE600_PM2_Front view.webp', 9),
+(83, 36, 'GIANT DAMIER WAVES MONOGRAM DENIM JACKET', '46', '3,900.00', '4,400.00', 'louis-vuitton-giant-damier-waves-monogram-denim-jacket-ready-to-wear--HJA10WUZC650_PM2_Front view.webp', 5),
+(84, 37, 'Blue', '', '4,500.00', '4,700.00', 'louis-vuitton-tambour-slim-monogram-watches-and-jewellery--QBB162_PM2_Front view.webp', 4),
+(85, 38, 'White', '', '680', '700', '429446_02JP0_9064_002_100_0000_Light-Mens-Ace-embroidered-sneaker.png', 16);
 
 -- --------------------------------------------------------
 
@@ -193,13 +206,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`idProduct`, `nameProduct`, `idCategory`, `idBrand`, `imgUrl`, `flashSale`, `note`, `date`, `description`) VALUES
-(1, 'CLOUD PRINT T-SHIRT', 1, 1, '../view/assets/img/gallery/louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Frontview.webp', 1, 35, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroide'),
-(2, 'SCULPTURAL JACKET', 2, 1, '../view/assets/img/gallery/louis-vuitton-sculptural-jacket-ready-to-wear--HJJ75WTCX900_PM2_Front view.webp', 1, 15, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroide'),
-(3, 'EMBOSSED CLOUDS 90S SLIM PANTS', 1, 1, '../view/assets/img/gallery/louis-vuitton-embossed-clouds-90s-slim-pants-ready-to-wear--HJP70WYFD600_PM2_Frontview.webp', 1, 22, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
-(4, 'Yellow gold ring with Interlocking G', 17, 2, '', 0, 0, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
-(5, 'Yellow gold necklace with Interlocking G', 16, 2, '', 0, 0, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
-(6, 'Round-frame sunglasses', 11, 2, '', 0, 0, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
-(7, 'G-Timeless watch, 40mm', 12, 2, '', 0, 0, '2020-11-20 14:02:53', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i');
+(33, 'CLOUD PRINT T-SHIRT', 1, 1, 'louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Front view.webp', 1, 20, '2020-12-02 13:49:13', 'With its graphic Cloud motif, this T-shirt channels the season\'s Heaven On Earth theme. The design is digitally printed on lightweight cotton jersey, creating a vintage handcrafted feel. Tailored in a regular fit, the piece features a discreet LV Cloud signature.'),
+(34, 'SCULPTURAL JACKET', 1, 1, 'louis-vuitton-sculptural-jacket-ready-to-wear--HJJ75WTCX900_PM2_Front view.webp', 1, 10, '2020-12-02 14:17:44', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
+(35, 'CLOUDS 90S SLIM PANTS', 15, 1, 'louis-vuitton-clouds-90s-slim-pants-ready-to-wear--HJP70WYFE600_PM2_Front view.webp', 1, 23, '2020-12-02 14:19:47', 'With its graphic Cloud motif, this Pants channels the season\'s Heaven On Earth theme. The design is digitally printed on lightweight cotton jersey, creating a vintage handcrafted feel. Tailored in a regular fit, the piece features a discreet LV Cloud signature.'),
+(36, 'GIANT DAMIER WAVES DENIM JACKET', 2, 1, 'louis-vuitton-giant-damier-waves-monogram-denim-jacket-ready-to-wear--HJA10WUZC650_PM2_Front view.webp', 0, 0, '2020-12-02 15:41:30', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
+(37, 'TAMBOUR SLIM MONOGRAM', 12, 1, 'louis-vuitton-tambour-slim-monogram-watches-and-jewellery--QBB162_PM2_Front view.webp', 0, 5, '2020-12-02 16:28:16', 'Distinctive yet easy to wear, this timeless watch combines a thin Tambour Slim case with a classic shade of blue. The dial is adorned with iconic Monogram Flowers in a subtle tone-on-tone motif, with polished indexes and hands adding a sophisticated note of contrast. Ideal for everyday wear, it is a'),
+(38, 'Men\'s Ace embroidered sneaker', 1, 1, '429446_02JP0_9064_002_100_0000_Light-Mens-Ace-embroidered-sneaker.png', 0, 5, '2020-12-02 16:40:31', '');
 
 -- --------------------------------------------------------
 
@@ -242,7 +254,9 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`idRole`, `level`) VALUES
-(1, 'admin');
+(1, 'admin'),
+(2, 'Giữ xe'),
+(3, 'Lao công');
 
 -- --------------------------------------------------------
 
@@ -254,7 +268,7 @@ CREATE TABLE `user` (
   `idUser` int(11) NOT NULL COMMENT 'Mã khách hàng',
   `fullName` varchar(50) DEFAULT NULL COMMENT 'Tên khách hàng',
   `email` varchar(100) DEFAULT NULL COMMENT 'Email',
-  `degree` varchar(100) DEFAULT NULL COMMENT 'Địa chỉ',
+  `address` varchar(100) DEFAULT NULL COMMENT 'Địa chỉ',
   `phoneNumber` varchar(15) DEFAULT NULL COMMENT 'Số điện thoại',
   `dateOfBirth` date NOT NULL COMMENT 'Ngày sinh',
   `username` varchar(50) NOT NULL COMMENT 'tài khoản',
@@ -266,8 +280,8 @@ CREATE TABLE `user` (
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`idUser`, `fullName`, `email`, `degree`, `phoneNumber`, `dateOfBirth`, `username`, `password`, `idRole`) VALUES
-(1, 'Nguyễn Trà Thanh Huy', 'huytra264@gmail.com', 'Việt Nam', '0704633073', '2001-04-26', 'thanhhuy264', '778899', 1);
+INSERT INTO `user` (`idUser`, `fullName`, `email`, `address`, `phoneNumber`, `dateOfBirth`, `username`, `password`, `idRole`) VALUES
+(1, 'Nguyễn Trà Thanh Huy', 'huytra264@gmail.com', 'Việt Nam', '0704633073', '2001-04-26', 'thanhhuy264', '778899', 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -306,7 +320,8 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`idComment`),
-  ADD KEY `FK_comment_products` (`idProduct`);
+  ADD KEY `FK_comment_products` (`idProduct`),
+  ADD KEY `FK_comment_user` (`idUser`);
 
 --
 -- Chỉ mục cho bảng `groupproduct`
@@ -363,13 +378,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `idBill` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Hóa đơn';
+  MODIFY `idBill` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Hóa đơn', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `billdetail`
 --
 ALTER TABLE `billdetail`
-  MODIFY `idBillDetails` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết hóa đơn';
+  MODIFY `idBillDetails` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết hóa đơn', AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `brand`
@@ -387,7 +402,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id comment';
+  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id comment', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `groupproduct`
@@ -399,19 +414,19 @@ ALTER TABLE `groupproduct`
 -- AUTO_INCREMENT cho bảng `productdetail`
 --
 ALTER TABLE `productdetail`
-  MODIFY `idProductDetail` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id Product Detail', AUTO_INCREMENT=5;
+  MODIFY `idProductDetail` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id Product Detail', AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã sản phẩm', AUTO_INCREMENT=10;
+  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã sản phẩm', AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `idRating` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id rating';
+  MODIFY `idRating` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id rating', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `report`
@@ -423,7 +438,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT cho bảng `role`
 --
 ALTER TABLE `role`
-  MODIFY `idRole` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id role', AUTO_INCREMENT=2;
+  MODIFY `idRole` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id role', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
@@ -445,7 +460,7 @@ ALTER TABLE `bill`
 -- Các ràng buộc cho bảng `billdetail`
 --
 ALTER TABLE `billdetail`
-  ADD CONSTRAINT `FK_billdetail_bill` FOREIGN KEY (`idBill`) REFERENCES `bill` (`idBill`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_billdetail_bill` FOREIGN KEY (`idBill`) REFERENCES `bill` (`idBill`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_billdetail_productdetail` FOREIGN KEY (`idProductDetail`) REFERENCES `productdetail` (`idProductDetail`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -458,8 +473,8 @@ ALTER TABLE `category`
 -- Các ràng buộc cho bảng `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `FK_comment_products` FOREIGN KEY (`idProduct`) REFERENCES `products` (`idProduct`),
-  ADD CONSTRAINT `FK_comment_user` FOREIGN KEY (`idComment`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_comment_products` FOREIGN KEY (`idProduct`) REFERENCES `products` (`idProduct`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_comment_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `productdetail`

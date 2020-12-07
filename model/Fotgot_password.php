@@ -12,7 +12,7 @@
                 $conn->query($query);
                 return "Email sending successfully";
         } else {
-            return "Email sending faild";
+            return "Email sending fail";
         }
     }
 ?>

@@ -15,74 +15,52 @@
     <div class="container">
         <h2>User : <?= $getName ?> </h2>
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn-submit" data-toggle="modal" data-target="#myModal">Mở bảng chỉnh sửa</button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <h2>Edit User</h2>
-                        <br><br><br>
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <label>ID User :</label>
-                                <?php echo $data->idUser ?>
-                            </div>
-                            <div class="form-group">
-                                <label> Full Name : </label>
-                                <?PHP echo $data->fullName ?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Email : </label>
-                                <?PHP echo $data->email ?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Address : </label>
-                                <?PHP echo $data->address ?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Phone Number : </label>
-                                <?PHP echo $data->phoneNumber ?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Date Of Birth : </label>
-                                <?PHP echo $data->dateOfBirth ?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Username : </label>
-                                <?PHP echo $data->username?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Password : </label>
-                                <?PHP echo $data->password ?>                                
-                            </div>
-                            <div class="form-group">
-                                <label> Role : </label>
-                                <select name="idRole" class="form-control" value="">
-                                    <?PHP foreach ($data_role as $value) {  ?>
-                                        <option value="<?= $value->idRole?>"><?= $value->level ?></option>
-                                    <?PHP } ?>
-                                </select>                               
-                            </div>
-                            <input name="update" type="submit" value="Cập nhật" class="btn-submit">
-                        </form>
-
-                    </div>
-                </div>
-
+        <br><br><br>
+        <form action="" method="post">
+            <div class="form-group">
+                <label>ID User :</label>
+                <?php echo $data->idUser ?>
             </div>
-        </div>
+            <div class="form-group">
+                <label> Full Name : </label>
+                <?PHP echo $data->fullName ?>
+            </div>
+            <div class="form-group">
+                <label> Email : </label>
+                <?PHP echo $data->email ?>
+            </div>
+            <div class="form-group">
+                <label> Address : </label>
+                <?PHP echo $data->address ?>
+            </div>
+            <div class="form-group">
+                <label> Phone Number : </label>
+                <?PHP echo $data->phoneNumber ?>
+            </div>
+            <div class="form-group">
+                <label> Date Of Birth : </label>
+                <?PHP echo $data->dateOfBirth ?>
+            </div>
+            <div class="form-group">
+                <label> Username : </label>
+                <?PHP echo $data->username ?>
+            </div>
+            <div class="form-group">
+                <label> Password : </label>
+                <?PHP echo $data->password ?>
+            </div>
+            <div class="form-group">
+                <label> Role : </label>
+                <select name="idRole" class="form-control" value="">
+                    <?PHP foreach ($data_role as $value) {  ?>
+                        <option value="<?= $value->idRole ?>"><?= $value->level ?></option>
+                    <?PHP } ?>
+                </select>
+            </div>
+            <input name="update" type="submit" value="Cập nhật" class="btn-submit">
+        </form>
 
     </div>
-
 </body>
 
 </html>

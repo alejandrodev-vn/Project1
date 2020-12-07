@@ -26,13 +26,7 @@
             </div>
             <div class="form-group">
                 <label>Size : </label> 
-                <select name="size" class="form-control" value="">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="XL">XL</option>    
-                        <option value="XXL">XXL</option>
-                        <option value="Free size">Free size</option>    
-                    </select>
+               <input type="text" name="size" class="form-control">
             </div>
             <div class="form-group">
                 <label>Price : </label> 

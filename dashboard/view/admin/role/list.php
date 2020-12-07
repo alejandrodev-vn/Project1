@@ -57,9 +57,9 @@
                         foreach ($data as $value) {         ?>
                             <tr>
                                 <td><?php echo $value->idRole ?></td>
-                                <td><?php echo $value->level?></td>
-                                <td class="text-center">                                  
-                                <a href="?act=user&delete=<?PHP echo $value->idRole ?>" class="btn-edit">Del</a>                         
+                                <td><?php echo $value->level ?></td>
+                                <td class="text-center">
+                                    <a href="?act=user&delete=<?PHP echo $value->idRole ?>" class="btn-edit">Del</a>
                                 </td>
                             </tr>
                         <?php }
@@ -72,10 +72,6 @@
                     </tbody>
                 </table>
         </div>
-        <a href="" class="right__tableMore">
-            <p>Xem tất cả các đơn đặt hàng</p> <img src="../public/assets/arrow-right-black.svg" alt="">
-        </a>
-    </div>
     </div>
 </body>
 
