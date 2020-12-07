@@ -92,7 +92,7 @@
                                         unset($_SESSION['group']);
                                             foreach($brand as $brands){
                                                 echo '
-                                                    <li onclick = "brand('.$brands['idThuongHieu'].');"><label class><input type="checkbox" name="checkboxStatus" value="louis-vuitton" hidden>'.$brands['nameBrand'].'<span class="checkbox-x"></span></label></li>
+                                                    <li><label class><input type="checkbox" name="checkboxStatus" value="louis-vuitton" hidden>'.$brands['nameBrand'].'<span class="checkbox-x"></span></label></li>
                                                 ';
                                             }
                                         ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 02, 2020 lúc 03:01 PM
+-- Thời gian đã tạo: Th12 06, 2020 lúc 05:14 PM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.4.7
 
@@ -31,19 +31,20 @@ CREATE TABLE `bill` (
   `idBill` int(11) NOT NULL COMMENT 'Hóa đơn',
   `idUser` int(11) NOT NULL COMMENT 'Mã khách hàng',
   `total` float NOT NULL COMMENT 'Tổng tiền',
-  `date` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày nhập'
+  `date` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày nhập',
+  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'trang thai 0-false 1-true'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `bill`
 --
 
-INSERT INTO `bill` (`idBill`, `idUser`, `total`, `date`) VALUES
-(5, 1, 300000, '2020-12-02 00:40:54'),
-(6, 1, 1324120, '2020-12-02 00:40:54'),
-(7, 1, 300000, '2020-12-02 00:40:56'),
-(8, 1, 1324120, '2020-12-02 00:40:56'),
-(9, 1, 300000, '2020-12-02 00:41:03');
+INSERT INTO `bill` (`idBill`, `idUser`, `total`, `date`, `status`) VALUES
+(5, 1, 2290, '2020-12-02 00:40:54', 0),
+(6, 2, 1324120, '2020-12-02 00:40:54', 0),
+(7, 1, 300000, '2020-12-02 00:40:56', 0),
+(8, 2, 1324120, '2020-12-02 00:40:56', 0),
+(9, 1, 300000, '2020-12-02 00:41:03', 0);
 
 -- --------------------------------------------------------
 
@@ -57,9 +58,24 @@ CREATE TABLE `billdetail` (
   `idProductDetail` int(11) NOT NULL COMMENT 'Mã sản phẩm',
   `unitPrice` float NOT NULL COMMENT 'Đơn giá',
   `quantity` int(11) NOT NULL COMMENT 'Số lượng',
-  `discount` int(11) NOT NULL COMMENT '% giảm giá',
+  `discount` int(11) DEFAULT NULL COMMENT '% giảm giá',
   `subtotal` float NOT NULL COMMENT 'Thành tiền'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `billdetail`
+--
+
+INSERT INTO `billdetail` (`idBillDetails`, `idBill`, `idProductDetail`, `unitPrice`, `quantity`, `discount`, `subtotal`) VALUES
+(13, 5, 79, 1145, 2, 0, 2290),
+(14, 7, 83, 3900, 2, 0, 7800),
+(15, 5, 83, 3900, 3, 0, 7800),
+(16, 6, 85, 680, 1, NULL, 680),
+(17, 6, 81, 2230, 1, NULL, 2230),
+(18, 6, 84, 4500, 1, NULL, 4500),
+(19, 8, 81, 2330, 2, NULL, 4660),
+(20, 9, 84, 4500, 1, NULL, 4500),
+(21, 9, 80, 9500, 2, NULL, 190000);
 
 -- --------------------------------------------------------
 
@@ -181,7 +197,8 @@ INSERT INTO `productdetail` (`idProductDetail`, `idProduct`, `color`, `size`, `p
 (81, 35, 'SkyBlue', '36', '2,330.00', '2,900.00', 'louis-vuitton-clouds-90s-slim-pants-ready-to-wear--HJP70WYFE600_PM2_Front view.webp', 9),
 (83, 36, 'GIANT DAMIER WAVES MONOGRAM DENIM JACKET', '46', '3,900.00', '4,400.00', 'louis-vuitton-giant-damier-waves-monogram-denim-jacket-ready-to-wear--HJA10WUZC650_PM2_Front view.webp', 5),
 (84, 37, 'Blue', '', '4,500.00', '4,700.00', 'louis-vuitton-tambour-slim-monogram-watches-and-jewellery--QBB162_PM2_Front view.webp', 4),
-(85, 38, 'White', '', '680', '700', '429446_02JP0_9064_002_100_0000_Light-Mens-Ace-embroidered-sneaker.png', 16);
+(85, 38, 'White', '', '680', '700', '429446_02JP0_9064_002_100_0000_Light-Mens-Ace-embroidered-sneaker.png', 16),
+(86, 33, 'SkyBlue', 'L', '1,150.00', '1,450.00', 'louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Front view.webp', 9);
 
 -- --------------------------------------------------------
 
@@ -209,9 +226,9 @@ INSERT INTO `products` (`idProduct`, `nameProduct`, `idCategory`, `idBrand`, `im
 (33, 'CLOUD PRINT T-SHIRT', 1, 1, 'louis-vuitton-cloud-print-t-shirt-ready-to-wear--HJY79WNPG617_PM2_Front view.webp', 1, 20, '2020-12-02 13:49:13', 'With its graphic Cloud motif, this T-shirt channels the season\'s Heaven On Earth theme. The design is digitally printed on lightweight cotton jersey, creating a vintage handcrafted feel. Tailored in a regular fit, the piece features a discreet LV Cloud signature.'),
 (34, 'SCULPTURAL JACKET', 1, 1, 'louis-vuitton-sculptural-jacket-ready-to-wear--HJJ75WTCX900_PM2_Front view.webp', 1, 10, '2020-12-02 14:17:44', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
 (35, 'CLOUDS 90S SLIM PANTS', 15, 1, 'louis-vuitton-clouds-90s-slim-pants-ready-to-wear--HJP70WYFE600_PM2_Front view.webp', 1, 23, '2020-12-02 14:19:47', 'With its graphic Cloud motif, this Pants channels the season\'s Heaven On Earth theme. The design is digitally printed on lightweight cotton jersey, creating a vintage handcrafted feel. Tailored in a regular fit, the piece features a discreet LV Cloud signature.'),
-(36, 'GIANT DAMIER WAVES DENIM JACKET', 2, 1, 'louis-vuitton-giant-damier-waves-monogram-denim-jacket-ready-to-wear--HJA10WUZC650_PM2_Front view.webp', 0, 0, '2020-12-02 15:41:30', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
+(36, 'GIANT DAMIER WAVES DENIM JACKET', 2, 1, 'louis-vuitton-giant-damier-waves-monogram-denim-jacket-ready-to-wear--HJA10WUZC650_PM2_Front view.webp', 0, 5, '2020-12-02 15:41:30', 'This exceptional piece channels the collection\'s reengineering of corporate dress codes, with a deconstructed version of the traditional suit jacket. Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered yarn, creating a sculptural effect. The back i'),
 (37, 'TAMBOUR SLIM MONOGRAM', 12, 1, 'louis-vuitton-tambour-slim-monogram-watches-and-jewellery--QBB162_PM2_Front view.webp', 0, 5, '2020-12-02 16:28:16', 'Distinctive yet easy to wear, this timeless watch combines a thin Tambour Slim case with a classic shade of blue. The dial is adorned with iconic Monogram Flowers in a subtle tone-on-tone motif, with polished indexes and hands adding a sophisticated note of contrast. Ideal for everyday wear, it is a'),
-(38, 'Men\'s Ace embroidered sneaker', 1, 1, '429446_02JP0_9064_002_100_0000_Light-Mens-Ace-embroidered-sneaker.png', 0, 5, '2020-12-02 16:40:31', '');
+(38, 'Men\'s Ace embroidered sneaker', 7, 2, '429446_02JP0_9064_002_100_0000_Light-Mens-Ace-embroidered-sneaker.png', 0, 5, '2020-12-02 16:40:31', 'Tailored from wool twill in a regular fit, it is broken up into pieces and reassembled with embroidered');
 
 -- --------------------------------------------------------
 
@@ -281,7 +298,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `fullName`, `email`, `address`, `phoneNumber`, `dateOfBirth`, `username`, `password`, `idRole`) VALUES
-(1, 'Nguyễn Trà Thanh Huy', 'huytra264@gmail.com', 'Việt Nam', '0704633073', '2001-04-26', 'thanhhuy264', '778899', 3);
+(1, 'Nguyễn Trà Thanh Huy', 'huytra264@gmail.com\r\n', 'Việt Nam', '0704633073', '2001-04-26', 'thanhhuy264', '9b9d4499803c1a9a5282fa66cc3c44', 3),
+(2, 'Tran Minh Quang', 'huytrafpt@gmail.com', 'Ho Chi Minh', '0704633073', '2001-04-26', 'quangtm', 'a6b2cec44d1040434abb53eb7f8d3e', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -384,7 +402,7 @@ ALTER TABLE `bill`
 -- AUTO_INCREMENT cho bảng `billdetail`
 --
 ALTER TABLE `billdetail`
-  MODIFY `idBillDetails` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết hóa đơn', AUTO_INCREMENT=13;
+  MODIFY `idBillDetails` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết hóa đơn', AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `brand`
@@ -414,7 +432,7 @@ ALTER TABLE `groupproduct`
 -- AUTO_INCREMENT cho bảng `productdetail`
 --
 ALTER TABLE `productdetail`
-  MODIFY `idProductDetail` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id Product Detail', AUTO_INCREMENT=86;
+  MODIFY `idProductDetail` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id Product Detail', AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -444,7 +462,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã khách hàng', AUTO_INCREMENT=2;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã khách hàng', AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

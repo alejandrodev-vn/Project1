@@ -372,8 +372,9 @@ if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     // });
 // checkbox for filter shop
 
-    $('aside#filter .filter__tree-content li label input').click(function (){
-      $(this).parent('label').toggleClass('checkbox-checked');
+    $('aside#filter .filter__tree-content li label').click(function (){
+      $('label').removeClass('checkbox-checked');
+      $(this).addClass('checkbox-checked');
     })
     // //Top
     // $('aside#filter .filter__tree-content li label').click(function (){
