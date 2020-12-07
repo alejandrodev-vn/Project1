@@ -1,6 +1,6 @@
 <?php
     function getAllShop(){
-        $sql = "select * from products inner join productdetail on products.idProduct = productdetail.idProduct";
+        $sql = "select * from products inner join productdetail where products.idProduct = productdetail.idProduct GROUP BY products.idProduct";
         return query($sql);
     }
     function getAllBrand(){
@@ -20,11 +20,7 @@
         return query($sql);
     }
     function getAllProductByFilter($where){
-        $sql = "select products.idProduct, products.nameProduct, products.idCategory, products.idBrand, products.imgUrl from products $where";
-        return query($sql);
-    }
-    function getAllProductByF($where){
-        $sql = "select products.idProduct, products.nameProduct, products.idCategory, products.idBrand, products.imgUrl, price, oldPrice from products $where";
+        $sql = "select products.idProduct, products.nameProduct, products.idCategory, products.idBrand, products.imgUrl, price, oldPrice, idProductDetail from products inner join productdetail on products.idProduct = productdetail.idProduct $where";
         return query($sql);
     }
 ?>
