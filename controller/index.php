@@ -1,8 +1,14 @@
 <?php
     session_start();
+<<<<<<< HEAD
+    require_once ("../model/connect.php");
+    require_once ("../model/shop.php");
+    
+=======
     require_once("../model/connect.php");
     require_once("../model/shop.php");
 
+>>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
 //    connect();
         $conn = connect();
         $IMAGE_DIR =  "../images/";
@@ -23,48 +29,7 @@
             case 'shopping-cart':
                     include "../view/cart.php";
                     break;                    
-            case 'cart':                                       
-                    include "../model/cart.php";                
-                    
-                    if(isset($_GET['id'])){
-                        $id=$_GET['id'];
-                        }
-                        $action = (isset($_GET['action'])) ? $_GET['action'] : 'add';
-                        $quantity =(isset($_GET['quantity'])) ? $_GET['quantity'] : 1;
-                        if($quantity <= 0){
-                        $quantity=1;
-                        }                                                                                                
-                    $item = getProductDetailId($conn, $id);
-                //     session_destroy();
-                //         die(); 
-                    foreach($item as $i){
-                            $i=
-                            [
-                                    'id'=>$i['idProductDetail'],
-                                    'color'=>$i['color'],
-                                    'size'=>$i['size'],
-                                    'price'=>($i['price']>0) ? $i['price'] : $i['oldPrice'],
-                                    'img'=>$i['imgUrl'],
-                                    'quantity'=> $quantity
-
-
-                            ];          
-                    }
-                    if($action == 'add'){
-                        if(isset($_SESSION['cart'] [$id])){
-                            $_SESSION['cart'] [$id]['quantity']+=$quantity;
-                        
-                        }else{
-                            $_SESSION['cart'] [$id] = $i;
-                        }
-                    }
-                    if($action == 'update'){
-                        $_SESSION['cart'][$id]['quantity'] = $quantity;
-                    }
-                    if($action == 'delete'){
-                        unset($_SESSION['cart'][$id]);
-                    }                              
-                    include "../view/cart.php";
+            case 'cart':
                     break;
             case 'checkout':
                     include "../view/checkout.php";
@@ -84,7 +49,13 @@
                     }else {
                         $pro=0;
                     }
+<<<<<<< HEAD
+                    // echo"<pre>";
+                    // print_r($data);
+=======
+>>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
                     include "../view/product_details.php";
+                    
                     break;
             case 'shop':
                 include "../model/ProductDetail.php";
@@ -120,10 +91,23 @@
                         include "../view/login/login-form.php";
                     }                        
                     //logout
-                    if(isset($_GET['logout'])){
-                        unset($_SESSION['username']);                        
-                        } 
+                    // if(isset($_GET['logout'])){
+                    //     unset($_SESSION['username']);
+                    //     // header
+                    //     include "../view/login/login-form.php";
+                  
+                    //     } 
                     break;
+            case 'logout': 
+                      unset($_SESSION['username']);
+                      $MESSAGE = 'đăng xuất thành công';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
+                        $MESSAGE = '';
+
+                        include "../view/login/login-form.php";
+            break;
+
             case 'forgot_password':
                         include "../model/Fotgot_password.php";
                         include "../view/forgotpassword.php";

@@ -2,8 +2,11 @@
   <main>
   <?php
   $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];
-  // echo'<pre>';
-  // var_dump($_SESSION['cart']);
+// echo'<pre>';
+//   var_dump($cart);
+  // var_dump($_SESSION['username']);
+  // session_destroy();
+  //   die(); 
   
   ?>
 
@@ -22,7 +25,7 @@
           </div>
       </div>
       <!--================Cart Area =================-->
-      <?php foreach($cart as $k=>$v): ?>
+      <form action="cart.php">
       <section class="cart_area section_padding">
         <div class="container">
           <div class="cart_inner">
@@ -31,12 +34,21 @@
                 <thead>
                   <tr>
                     <th scope="col">Product</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">color</th>
+                    <th scope="col">Size</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
+                <?php
+                $total_price = 0; ?>
+                <?php foreach($cart as $k =>$v):
+                 $total_price += ($v['price'] * $v['quantity']);
+                ?>
                   <tr>
                     <td>
                       <div class="media">
@@ -44,54 +56,50 @@
                           <img src="../view/assets/img/gallery/card1.png" alt="" />
                         </div>
                         <div class="media-body">
-                          <p>Minimalistic shop for multipurpose use</p>
+                          <p></p>
                         </div>
                       </div>
                     </td>
                     <td>
-                      <h5>$360.00</h5>
+                      <h5><?=$k?></h5>
                     </td>
                     <td>
+                      <h5><?=$v['color']?></h5>
+                    </td>
+                    <td>
+                      <h5><?=$v['size']?></h5>
+                    </td>
+                    <td>
+                      <h5>$<?=$v['price']?>.00</h5>
+                    </td>                    
+                    <td>
+                    
+                      <input type="hidden" name="action" value="update">
+                      <input type="hidden" name="id" value="<?=$k?>">
                       <div class="product_count">
-                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                        <input class="input-number" type="text" value="1" min="0" max="10">
-                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                        <!-- <span class="input-number-decrement"> <i class="ti-minus"></i></span> -->
+                        <input name ="quantity" class="input-number" type="number" value="<?=$v['quantity']?>" min="0" max="10">
+                        <!-- <span class="input-number-increment"> <i class="ti-plus"></i></span> -->
                       </div>
+                      </td>                    
+                    <td>
+                      <h5>$<?=$v['price']*$v['quantity']?>.00</h5>
                     </td>
                     <td>
-                      <h5>$720.00</h5>
+                    <a href="cart.php?id=<?php echo $v['id'] ?>&action=delete">del</a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="media">
-                        <div class="d-flex">
-                          <img src="../view/assets/img/gallery/card2.png" alt="" />
-                        </div>
-                        <div class="media-body">
-                          <p>Minimalistic shop for multipurpose use</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <h5>$360.00</h5>
-                    </td>
-                    <td>
-                      <div class="product_count">
-                          <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                          <input class="input-number" type="text" value="1" min="0" max="10">
-                          <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                      </div>
-                    </td>
-                    <td>
-                      <h5>$720.00</h5>
-                    </td>
-                  </tr>
+                 
                   <?php endforeach ?>
                   <tr class="bottom_button">
                     <td>
-                      <a class="btn_1" href="">Update Cart</a>
+                    <button type="submit" class="btn_1"> Update Cart</button>
+                      <!-- <a class="btn_1" href="">Update Cart</a> -->
                     </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td>
@@ -100,17 +108,27 @@
                       </div>
                     </td>
                   </tr>
+                  
                   <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td>
                       <h5>Subtotal</h5>
                     </td>
                     <td>
-                      <h5>$2160.00</h5>
+                      <h5>$<?=$total_price?>.00</h5>
                     </td>
                   </tr>
+                  </form>
                   <tr class="shipping_area">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td>
@@ -158,11 +176,16 @@
                 </tbody>
               </table>
               <div class="checkout_btn_inner float-right">
+              
                 <a class="btn_1" href="#">Continue Shopping</a>
-                <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                <!-- <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a> -->
+                <form action="checkout.php" method="post">
+                <button name="btn_thanhtoan" type="submit" class="btn_1 checkout_btn_1"> Proceed to checkout</button>
+                </form>
               </div>
             </div>
           </div>
       </section>
+     
       <!--================End Cart Area =================-->
   </main>

@@ -52,4 +52,20 @@ function add_cookie($name, $value, $day){
 function delete_cookie($name){
     add_cookie($name,"", -1);
 }
+
+function check_role1(){
+    global $SITE_URL;
+   if(isset($_SESSION['username'])){
+       if($_SESSION['username']['idRole'] == 1){
+           return;
+       } else {
+           
+       }
+       if(strpos($_SERVER["REQUEST_URI"], '/dashboard/') == FALSE){
+           return;
+       }
+   }
+   $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
+   header("location: ../../controller/index.php?act=login");
+}
 ?>

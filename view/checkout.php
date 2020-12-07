@@ -15,11 +15,12 @@
             </div>
         </div>
         <!--================Checkout Area =================-->
+        
         <section class="checkout_area section_padding">
           <div class="container">
             <div class="returning_customer">
               <div class="check_title">
-                <h2>
+                <!-- <h2>
                   Returning Customer?
                   <a href="#">Click here to login</a>
                 </h2>
@@ -28,8 +29,8 @@
                 If you have shopped with us before, please enter your details in the
                 boxes below. If you are a new customer, please proceed to the
                 Billing & Shipping section.
-              </p>
-              <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+              </p> -->
+              <!-- <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                 <div class="col-md-6 form-group p_star">
                   <input type="text" class="form-control" id="name" name="name" value=" " />
                   <span class="placeholder" data-placeholder="Username or Email"></span>
@@ -48,8 +49,8 @@
                   </div>
                   <a class="lost_pass" href="#">Lost your password?</a>
                 </div>
-              </form>
-            </div>
+              </form> -->
+            <!-- </div>
             <div class="cupon_area">
               <div class="check_title">
                 <h2>
@@ -59,11 +60,11 @@
               </div>
               <input type="text" placeholder="Enter coupon code" />
               <a class="tp_btn" href="#">Apply Coupon</a>
-            </div>
+            </div> -->
             <div class="billing_details">
               <div class="row">
-                <div class="col-lg-8">
-                  <h3>Billing Details</h3>
+                 <div class="col-lg-4">
+                  <!-- <h3>Billing Details</h3>
                   <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                     <div class="col-md-6 form-group p_star">
                       <input type="text" class="form-control" id="first" name="name" />
@@ -128,7 +129,7 @@
                       <textarea class="form-control" name="message" id="message" rows="1"
                         placeholder="Order Notes"></textarea>
                     </div>
-                  </form>
+                  </form> -->
                 </div>
                 <div class="col-lg-4">
                   <div class="order_box">
