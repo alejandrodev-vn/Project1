@@ -166,7 +166,7 @@
                                             <?php if($product['flashSale']==1){echo '<input type="text" class="type" value="flashSale" hidden>';} else {echo '<input type="text" class="type" value="new" hidden>';} ?>
                                             <img src="<?=$IMAGE_DIR.$product['imgUrl']?>" alt="product">
                                             <div class="img-cap">
-                                                <a href="?act=cart&id=<?=$product['idProductDetail']?>">Add to cart</a>
+                                                <a href="cart.php?id=<?=$product['idProductDetail']?>">Add to cart</a>
                                             </div>
                                             <div class="favorit-items">
                                                 <span class="flaticon-heart"></span>

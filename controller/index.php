@@ -2,11 +2,7 @@
     session_start();
 
     require_once ("../model/connect.php");
-    require_once ("../model/shop.php");
-    
-
-
-
+    require_once ("../model/shop.php");  
 //    connect();
         $conn = connect();
         $IMAGE_DIR =  "../images/";
