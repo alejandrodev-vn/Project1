@@ -115,36 +115,35 @@
                         <!--single-product-->
                         <?php
                             foreach($products as $product)
-                            { ?>
+                            echo '
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                                     <div class="single-product-items mb-50 text-center">
                                         <div class="product-img">
-                                            <?php if($product['flashSale']==1){echo '<input type="text" class="type" value="flashSale" hidden>';} else {echo '<input type="text" class="type" value="new" hidden>';} ?>
-                                            <img src="<?=$IMAGE_DIR.$product['imgUrl']?>" alt="product">
+                                            <img src="../images/'.$product['imgUrl'].'" alt="product">
                                             <div class="img-cap">
-                                                <a href="cart.php?id=<?=$product['idProductDetail']?>">Add to cart</a>
+                                                <a href="?act=cart&id='.$product['idProductDetail'].'">Add to cart</a>
                                             </div>
                                             <div class="favorit-items">
                                                 <span class="flaticon-heart"></span>
                                             </div>
                                         </div>
                                         <div class="product-caption">
-                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'"><?=$product['nameProduct']?></a></h3>
+                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'">'.$product['nameProduct'].'</a></h3>
                                         </div>
                                         <div class="product-content">
                                             <div class="price">
-                                                <span class="new-price">$<?=$product['price']?></span>
-                                                <span class="old-price">$<?=$product['oldPrice']?></span>
+                                                <span class="new-price">$ '.$product['price'].'</span>
+                                                <span class="old-price">$ '.$product['oldPrice'].'</span>
                                             </div>
                                             <div class="sold">
                                                 <div class="percent"></div>
-                                                <div class="text"><p>Rest: <?=$product['quantity']?></p></div>
+                                                <div class="text"><p>Còn lại: 2</p></div>
                                             </div>
                                             <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                                         </div> 
                                     </div>
                                 </div>
-                                <?php } ?>
+                                '; ?>
                         <!--single-product-->
                     </div>
                     <!--end row product-->

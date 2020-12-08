@@ -37,12 +37,7 @@
     function insertbill($conn){
         $sql = "INSERT INTO bill (idBill, idUser, total, date, status)";
         $stmt = $conn->prepare($sql);
-        $stmt = execute();
-        
-
-    }
-
-
-    
+        $stmt = execute($sql);
+    }    
 ?>
 
