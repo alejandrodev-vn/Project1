@@ -60,7 +60,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <aside id="filter" class="hidden-xs hidden-sm">
                         <ul class="filter__wrapper">
-                            <li class="filter__tree" >
+                            <li class="filter__tree">
                                 <p class="filter__tree-title">Brands<i class="fas fa-angle-down"></i></p>
                                 <ul class="filter__tree-content">
                                     <?php
@@ -68,7 +68,7 @@
                                         unset($_SESSION['group']);
                                             foreach($brand as $brands){
                                                 echo '
-                                                    <li onclick = "brand('.$brands['idThuongHieu'].');"><label class><input type="checkbox" name="checkboxStatus" value="louis-vuitton" hidden>'.$brands['nameBrand'].'<span class="checkbox-x"></span></label></li>
+                                                    <li><input type="checkbox" name="checkboxStatus" value="louis-vuitton" hidden><label  onclick = "brand('.$brands['idThuongHieu'].');">'.$brands['nameBrand'].'<span class="checkbox-x"></span></label></li>
                                                 ';
                                             }
                                         ?>
@@ -80,7 +80,7 @@
                                     <?php
                                         foreach($group as $groups){
                                             echo '
-                                                <li onclick = "group('.$groups['idGroupProduct'].');"><label class><input type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden>'.$groups['nameGroupProduct'].'<span class="checkbox-x"></span></label></li>
+                                                <li><input type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden><label onclick = "group('.$groups['idGroupProduct'].');">'.$groups['nameGroupProduct'].'<span class="checkbox-x"></span></label></li>
                                             ';
                                         }
                                     ?>
@@ -97,7 +97,7 @@
                                         $category = getAllGroupProductById($id);
                                         foreach($category as $c){
                                             echo '
-                                            <li onclick = "'.$groups['nameGroupProduct'].'('.$c['idCategory'].')"><label class><input type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden>'.$c['nameCategory'].'<span class="checkbox-x"></span></label></li>
+                                            <li><input type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden><label onclick = "'.$groups['nameGroupProduct'].'('.$c['idCategory'].')">'.$c['nameCategory'].'<span class="checkbox-x"></span></label></li>
                                             ';
                                         }
                                     echo '                                       
@@ -116,33 +116,33 @@
                         <?php
                             foreach($products as $product)
                             echo '
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
-                                    <div class="single-product-items mb-50 text-center">
-                                        <div class="product-img">
-                                            <img src="../images/'.$product['imgUrl'].'" alt="product">
-                                            <div class="img-cap">
-                                                <a href="?act=cart&id='.$product['idProductDetail'].'">Add to cart</a>
-                                            </div>
-                                            <div class="favorit-items">
-                                                <span class="flaticon-heart"></span>
-                                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
+                            <div class="single-product-items mb-50 text-center">
+                                    <div class="product-img">
+                                        <img src="../images/'.$product['imgUrl'].'" alt="product">
+                                        <div class="img-cap">
+                                            <a href="?act=cart&id='.$product['idProductDetail'].'">Add to cart</a>
                                         </div>
-                                        <div class="product-caption">
-                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'">'.$product['nameProduct'].'</a></h3>
+                                        <div class="favorit-items">
+                                            <span class="flaticon-heart"></span>
                                         </div>
-                                        <div class="product-content">
-                                            <div class="price">
-                                                <span class="new-price">$ '.$product['price'].'</span>
-                                                <span class="old-price">$ '.$product['oldPrice'].'</span>
-                                            </div>
-                                            <div class="sold">
-                                                <div class="percent"></div>
-                                                <div class="text"><p>Còn lại: 2</p></div>
-                                            </div>
-                                            <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
-                                        </div> 
                                     </div>
+                                    <div class="product-caption">
+                                        <h3><a href="?act=productDetail&id='.$product['idProduct'].'">'.$product['nameProduct'].'</a></h3>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="price">
+                                            <span class="new-price">$'.$product['price'].'</span>
+                                            <span class="old-price">$'.$product['oldPrice'].'</span>
+                                        </div>
+                                        <div class="sold">
+                                            <div class="percent"></div>
+                                            <div class="text"><p>Rest: '.$product['quantity'].'</p></div>
+                                        </div>
+                                        <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
+                                    </div> 
                                 </div>
+                            </div>
                                 '; ?>
                         <!--single-product-->
                     </div>

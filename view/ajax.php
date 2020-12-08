@@ -24,7 +24,15 @@
         if(isset($_GET['group'])){
             $id = $_GET['group'];
             $name = 'group';
-            $_SESSION['group'] = array('name'=>$name,'value'=>$id);
+            if(!empty($_SESSION['group'])){
+                if($_SESSION['group']['name'] == $name && $_SESSION['group']['value'] == $id){
+                    unset($_SESSION['group']);
+                }else{
+                    $_SESSION['group'] = array('name'=>$name,'value'=>$id);
+                }
+            }else{
+                $_SESSION['group'] = array('name'=>$name,'value'=>$id);
+            }
             $group = getAllGroupById($id);
             if(!empty($_SESSION['filter'])){
                 $name = $group['nameGroupProduct'];
@@ -50,7 +58,9 @@
             }else{
                 if(in_array($name,array_column($_SESSION['filter'],'name'))){
                     foreach($_SESSION['filter'] as $key => $values){
-                        if($values['name'] == $name){
+                        if($values['name'] == $name && $values['value'] == $value){
+                            unset($_SESSION['filter'][$key]);
+                        }else{
                             $_SESSION['filter'][$key]['name'] = $name;
                             $_SESSION['filter'][$key]['value'] = $value;
                         }
@@ -105,7 +115,7 @@
                     GROUP BY productdetail.idProduct
                     ORDER BY SUM(billdetail.quantity) DESC LIMIT 6';
                 }
-                
+
             }
         }
         if(isset($_GET['price'])){
