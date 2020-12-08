@@ -1,6 +1,6 @@
 <?php
 include "../core/app.php";
-check_role1();
+// check_role1();
 
 require_once("../model/function.php");
 $db = new Database();
@@ -141,6 +141,7 @@ if (isset($_GET['act'])) {
         case 'category':
             $table = $_GET['act'];
             $data = $db->getObject($table);
+            $data_group = $db->getObject('groupproduct');
             $VIEW_NAME = '../view/admin/category/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -173,7 +174,7 @@ if (isset($_GET['act'])) {
                 if (isset($_POST['update']) && ($_POST['update'])) {
                     $data = [
                         'nameCategory' => $_POST['nameProduct'],
-                        'nameGroupProduct' => $_POST['nameGroupProduct']
+                        'idGroupProduct' => $_POST['idGroupProduct']
                     ];
                     if ($db->insert($table, $data))
                         $message = "Cập nhật thành công";

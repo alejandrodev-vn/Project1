@@ -47,7 +47,7 @@
                 <?php
                 $total_price = 0; ?>
                 <?php foreach($cart as $k =>$v):
-                 $total_price += ($v['price'] * $v['quantity']);
+                 $total_price += ((float)$v['price'] * (int)$v['quantity']);
                 ?>
                   <tr>
                     <td>
@@ -83,7 +83,7 @@
                       </div>
                       </td>                    
                     <td>
-                      <h5>$<?=$v['price']*$v['quantity']?>.00</h5>
+                      <h5>$<?=(float)$v['price']*(int)$v['quantity']?>.00</h5>
                     </td>
                     <td>
                     <a href="cart.php?id=<?php echo $v['id'] ?>&action=delete">del</a>

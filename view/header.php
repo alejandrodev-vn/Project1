@@ -65,13 +65,17 @@
                         <div class="header-right">
                             <ul>
                                 <li>
-                                    <div class="nav-search search-switch">
-                                        <div id="search" class="search">
+                                <div class="nav-search search-switch">
+                                    <div id="search" class="search">
                                             <span class="closebtn" onclick="closeSearch()" title="Close">×</span>
                                             <div class="search-content">
                                                 <form action="/action_page.php">
-                                                <input type="text" placeholder="Search.." name="search">
-                                                <button type="submit"><i class="fas fa-search"></i></button>
+                                                    <input type="text" onkeyup="tim(this.value);" autocomplete="off" placeholder="Search.."
+                                                        name="search" id="delete_search">
+                                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                                    <div class="in" style="clear: both;background: white;text-align: initial !important;">
+                                                        <ul id="s" style="display: grid !important;justify-content: normal;"></ul>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -79,11 +83,25 @@
                                         <script >
                                             //search modal
                                             function openSearch() {
-                                            document.getElementById("search").style.display = "block";
+                                                document.getElementById("search").style.display = "block";
+                                                var s = document.getElementById("delete_search").value = "";
+                                                tim(s);
                                             }
 
                                             function closeSearch() {
-                                            document.getElementById("search").style.display = "none";
+                                                document.getElementById("search").style.display = "none";
+                                            }
+                                            function tim(x) {
+                                                var search = document.getElementById("s");
+                                                $.ajax({
+                                                    url: '../view/ajax.php',
+                                                    type: 'GET',
+                                                    data: 'search=' + x,
+                                                    success: function(data) {
+                                                        search.innerHTML=data;
+                                                    }
+                                                });
+                                                return false;
                                             }
                                         </script>
                                     </div>

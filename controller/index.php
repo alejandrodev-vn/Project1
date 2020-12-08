@@ -4,8 +4,6 @@
     require_once ("../model/shop.php");
     
 
-    require_once("../model/connect.php");
-    require_once("../model/shop.php");
 
 //    connect();
         $conn = connect();
@@ -49,7 +47,6 @@
                     }
                     // echo"<pre>";
                     // print_r($data);
-
                     include "../view/product_details.php";
                     
                     break;
