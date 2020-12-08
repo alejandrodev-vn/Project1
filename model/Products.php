@@ -28,11 +28,21 @@
 
     function getAllProduct($conn) {
         // $sql = "SELECT idProduct, nameProduct,  FROM products";  WHERE products.`flashSale` = 1"
-        $sql = "SELECT products.`idProduct` , products.`nameProduct`,productDetail.`idProductDetail`,productDetail.`price` , productDetail.`oldPrice`,products.`imgUrl` ,productDetail.`quantity`, products.`date`, products.`note` FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` GROUP BY idProduct";
+        $sql = "SELECT products.`idProduct` , products.`nameProduct`,productDetail.`idProductDetail`,productDetail.`price` , productDetail.`oldPrice`,products.`imgUrl` ,productDetail.`quantity`, products.`date`,products.`flashSale`, products.`note` FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` GROUP BY idProduct";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
     }
+    function insertbill($conn){
+        $sql = "INSERT INTO bill (idBill, idUser, total, date, status)";
+        $stmt = $conn->prepare($sql);
+        $stmt = execute();
+        
+
+    }
+
+
+    
 ?>
 

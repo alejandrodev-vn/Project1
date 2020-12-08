@@ -60,7 +60,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <aside id="filter" class="hidden-xs hidden-sm">
                         <ul class="filter__wrapper">
-                            <li class="filter__tree">
+                            <li class="filter__tree" >
                                 <p class="filter__tree-title">Brands<i class="fas fa-angle-down"></i></p>
                                 <ul class="filter__tree-content">
                                     <?php
@@ -74,7 +74,7 @@
                                         ?>
                                 </ul>
                             </li>
-                            <li class="filter__tree">
+                            <li class="filter__tree" id="tree">
                                 <p class="filter__tree-title">Group<i class="fas fa-angle-down"></i></p>
                                 <ul class="filter__tree-content">
                                     <?php
@@ -89,7 +89,7 @@
                             <?php
                                 foreach($group as $groups){
                                 echo '
-                                    <li class="filter__tree" id="categoryTop">
+                                    <li class="filter__tree" >
                                         <p class="filter__tree-title">'.$groups['nameGroupProduct'].'<i class="fas fa-angle-down"></i></p>
                                         <ul class="filter__tree-content" >
                                         ';
@@ -115,35 +115,36 @@
                         <!--single-product-->
                         <?php
                             foreach($products as $product)
-                            echo '
+                            { ?>
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                                     <div class="single-product-items mb-50 text-center">
                                         <div class="product-img">
-                                            <img src="../images/'.$product['imgUrl'].'" alt="product">
+                                            <?php if($product['flashSale']==1){echo '<input type="text" class="type" value="flashSale" hidden>';} else {echo '<input type="text" class="type" value="new" hidden>';} ?>
+                                            <img src="<?=$IMAGE_DIR.$product['imgUrl']?>" alt="product">
                                             <div class="img-cap">
-                                                <a href="?act=cart&id='.$product['idProductDetail'].'">Add to cart</a>
+                                                <a href="cart.php?id=<?=$product['idProductDetail']?>">Add to cart</a>
                                             </div>
                                             <div class="favorit-items">
                                                 <span class="flaticon-heart"></span>
                                             </div>
                                         </div>
                                         <div class="product-caption">
-                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'">'.$product['nameProduct'].'</a></h3>
+                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'"><?=$product['nameProduct']?></a></h3>
                                         </div>
                                         <div class="product-content">
                                             <div class="price">
-                                                <span class="new-price">$ '.$product['price'].'</span>
-                                                <span class="old-price">$ '.$product['oldPrice'].'</span>
+                                                <span class="new-price">$<?=$product['price']?></span>
+                                                <span class="old-price">$<?=$product['oldPrice']?></span>
                                             </div>
                                             <div class="sold">
                                                 <div class="percent"></div>
-                                                <div class="text"><p>Còn lại: 2</p></div>
+                                                <div class="text"><p>Rest: <?=$product['quantity']?></p></div>
                                             </div>
                                             <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                                         </div> 
                                     </div>
                                 </div>
-                                '; ?>
+                                <?php } ?>
                         <!--single-product-->
                     </div>
                     <!--end row product-->

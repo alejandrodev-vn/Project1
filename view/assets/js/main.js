@@ -370,11 +370,26 @@ if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     //   $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
     //   $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
     // });
+//flashSale product
+      // let product = $('.product-img');
+      // let type = $('.product-img .type').val();
+      // if(type==='flashSale'){
+      //   console.log(type);
+      //   $(product).addClass('flashSale')
+      //   $(product).append('<style>.product-wrapper .single-product-items .product-img.flashSale::before{display:block !important;}</style>');
+      // } 
+      // if(type==='new'){
+      //   console.log('2')
+      //   $(product).addClass('new')
+      //   $(product).append('<style>.product-wrapper .single-product-items .product-img.new::after{display:block !important;}</style>');
+      // }
 // checkbox for filter shop
 
-    $('aside#filter .filter__tree-content li label input').click(function (){
-      $(this).parent('label').toggleClass('checkbox-checked');
+    $('aside#filter  .filter__tree-content li label').click(function (){
+      $('label').removeClass('checkbox-checked');
+      $(this).addClass('checkbox-checked');
     })
+  
     // //Top
     // $('aside#filter .filter__tree-content li label').click(function (){
     //   if($('#filterTop').parent('label').hasClass('checkbox-checked')){

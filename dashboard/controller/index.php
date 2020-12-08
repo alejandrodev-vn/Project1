@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
 include "../core/app.php";
 check_role1();
-=======
->>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
 
 require_once("../model/function.php");
 $db = new Database();
@@ -11,11 +8,11 @@ $countProducts= $db->countData('idProduct','products');
 $countUser= $db->countData('idUser','user');
 $countCategory= $db->countData('idCategory','category');
 $countBill= $db->countData('idBill','bill');
-include_once("../core/app.php");
-if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
-    $data = $_SESSION['username'];
-    echo $data->idUser;
-}
+// include_once("../core/app.php");
+// // if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
+// //     $data = $_SESSION['username'];
+// //     echo $data->idUser;
+// // }
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -144,6 +141,7 @@ if (isset($_GET['act'])) {
         case 'category':
             $table = $_GET['act'];
             $data = $db->getObject($table);
+            $data_group = $db->getObject('groupproduct');
             $VIEW_NAME = '../view/admin/category/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -176,7 +174,7 @@ if (isset($_GET['act'])) {
                 if (isset($_POST['update']) && ($_POST['update'])) {
                     $data = [
                         'nameCategory' => $_POST['nameProduct'],
-                        'nameGroupProduct' => $_POST['nameGroupProduct']
+                        'idGroupProduct' => $_POST['idGroupProduct']
                     ];
                     if ($db->insert($table, $data))
                         $message = "Cập nhật thành công";
@@ -308,7 +306,7 @@ if (isset($_GET['act'])) {
             break;
         case 'bill':
             $table = $_GET['act'];
-            $data = $db->getObjectSelect($table,0,'status');
+            $data = $db->getObjectSelect($table,1,'status');
             $VIEW_NAME = '../view/admin/bill/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];

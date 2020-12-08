@@ -131,48 +131,40 @@
                     </div>
                   </form> -->
                 </div>
+                <?php $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];               
+                
+                ?>
                 <div class="col-lg-4">
+                
+                
+                
+                <form action="checkout.php"method="post">
                   <div class="order_box">
-                    <h2>Your Order</h2>
+                  <h6 style="color:black">đơn hàng của:</h6>
+                    <h2>#<?=$_SESSION['username']['fullName']?></h2>
                     <ul class="list">
                       <li>
-                        <a href="#">Product
+                        <a href="#">ID product
                           <span>Total</span>
                         </a>
                       </li>
+                      <?php
+                        $total_price = 0; ?>
+                        <?php foreach($cart as $k =>$v):
+                        $total_price += ($v['price'] * $v['quantity']);
+                        ?>
                       <li>
-                        <a href="#">Fresh Blackberry
-                          <span class="middle">x 02</span>
-                          <span class="last">$720.00</span>
+                        <a href="#">#<?=$k?>
+                          <span class="middle">x<?=$v['quantity']?></span>
+                          <span class="last">$<?=$v['quantity']*$v['price']?>.00</span>
                         </a>
                       </li>
-                      <li>
-                        <a href="#">Fresh Tomatoes
-                          <span class="middle">x 02</span>
-                          <span class="last">$720.00</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">Fresh Brocoli
-                          <span class="middle">x 02</span>
-                          <span class="last">$720.00</span>
-                        </a>
-                      </li>
+                      <?php endforeach ?>                     
                     </ul>
-                    <ul class="list list_2">
-                      <li>
-                        <a href="#">Subtotal
-                          <span>$2160.00</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">Shipping
-                          <span>Flat rate: $50.00</span>
-                        </a>
-                      </li>
+                    <ul class="list list_2">                     
                       <li>
                         <a href="#">Total
-                          <span>$2210.00</span>
+                          <span>$<?=$total_price?>.00</span>
                         </a>
                       </li>
                     </ul>
@@ -204,9 +196,12 @@
                       <label for="f-option4">I’ve read and accept the </label>
                       <a href="#">terms & conditions*</a>
                     </div>
-                    <a class="btn" href="#">Proceed to Paypal</a>
+                    <!-- <a name ="btn_paypal"class="btn" href="checkout.php">Proceed to Paypal</a> -->
+                    <button type="submit" name="btn_paybal" class = "btn">Proceed to Paypal</button>
                   </div>
                 </div>
+                </form>
+
               </div>
             </div>
           </div>

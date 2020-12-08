@@ -21,8 +21,12 @@
                 <input type="text" name="nameProduct" class="form-control" value="">
             </div>
             <div class="form-group">
-                <label>Group Product : </label>
-                <input type="text" name="idCategory" class="form-control" value="">
+                <label> Group :</label>
+                <select name="idGroupProduct" class="form-control" value="">
+                    <?PHP foreach ($data_group as $value) {  ?>
+                        <option value="<?= $value->idGroupProduct ?>"><?= $value->nameGroupProduct ?></option>
+                    <?PHP } ?>
+                </select>
             </div>
 
             <input name="update" type="submit" value="Thêm" class="btn-submit">

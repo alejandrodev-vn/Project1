@@ -26,8 +26,8 @@
                             <th>ID User</th>
                             <th>Total</th>
                             <th>Date</th>
-                            <th>Xoá</th>
-                            <th>Chi tiết</th>
+                            <th>Delete</th>
+                            <th>Detail</th>
 
                         </tr>
                     </thead>
@@ -41,8 +41,8 @@
                                 <td><?php echo $value->idUser?></td>
                                 <td><?php echo $value->total ?></td>
                                 <td><?php echo $value->date ?></td>
-                                <td class="text-center">                                  
-                                <a href="?act=bill&delete=<?PHP echo $value->idBill ?>" class="btn-edit">Del</a>                         
+                                <td>
+                                <a  href="?act=bill&delete=<?PHP echo $value->idBill ?>" class="btn-edit">Delete</a>
                                 </td>
                                 <td>
                                 <a  href="?act=bill&detail=<?PHP echo $value->idBill ?>" class="btn-edit">Detail</a>

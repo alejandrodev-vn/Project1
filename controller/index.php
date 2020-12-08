@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require_once("../model/connect.php");
-    require_once("../model/shop.php");
 
+    require_once ("../model/connect.php");
+    require_once ("../model/shop.php");  
 //    connect();
         $conn = connect();
         $IMAGE_DIR =  "../images/";
@@ -13,6 +13,9 @@
                             
             case 'about':
                     include "../view/about.php";
+                    break;
+            case 'checkouttr':
+                    echo 'Thanh toán thành công';
                     break;
             case 'blog-details':
                     include "../view/blog-details.php";
@@ -26,7 +29,9 @@
             case 'cart':
                     break;
             case 'checkout':
+                    
                     include "../view/checkout.php";
+                    
                     break;
             case 'confirmation':
                     include "../view/confirmation.php";

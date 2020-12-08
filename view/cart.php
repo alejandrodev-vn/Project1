@@ -1,7 +1,9 @@
 
   <main>
   <?php
+ 
   $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];
+  
 // echo'<pre>';
 //   var_dump($cart);
   // var_dump($_SESSION['username']);
@@ -47,7 +49,7 @@
                 <?php
                 $total_price = 0; ?>
                 <?php foreach($cart as $k =>$v):
-                 $total_price += ($v['price'] * $v['quantity']);
+                 $total_price += ((float)$v['price'] * (int)$v['quantity']);
                 ?>
                   <tr>
                     <td>
@@ -83,7 +85,7 @@
                       </div>
                       </td>                    
                     <td>
-                      <h5>$<?=$v['price']*$v['quantity']?>.00</h5>
+                      <h5>$<?=(float)$v['price']*(int)$v['quantity']?>.00</h5>
                     </td>
                     <td>
                     <a href="cart.php?id=<?php echo $v['id'] ?>&action=delete">del</a>
@@ -178,10 +180,10 @@
               <div class="checkout_btn_inner float-right">
               
                 <a class="btn_1" href="#">Continue Shopping</a>
-                <!-- <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a> -->
-                <form action="checkout.php" method="post">
+                <a class="btn_1 checkout_btn_1" href="index.php?act=checkout">Proceed to checkout</a>
+                <!-- <form action="bill.php" method="post">
                 <button name="btn_thanhtoan" type="submit" class="btn_1 checkout_btn_1"> Proceed to checkout</button>
-                </form>
+                </form> -->
               </div>
             </div>
           </div>

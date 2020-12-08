@@ -16,22 +16,22 @@
                     <div class="right__content">
                     <div class="right__title">DASHBOARD</div>
                     <div class="right__cards">
-        <a class="right__card" href="view_product.html">
+        <a class="right__card" href="?act=products">
             <div class="right__cardTitle">Quantity</div>
             <div class="right__cardNumber"><?= $countProducts[0]['count'] ?></div>
             <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
         </a>
-        <a class="right__card" href="view_customers.html">
+        <a class="right__card" href="?act=user">
             <div class="right__cardTitle">User</div>
             <div class="right__cardNumber"><?= $countUser[0]['count'] ?></div>
             <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
         </a>
-        <a class="right__card" href="view_p_category.html">
+        <a class="right__card" href="?act=category">
             <div class="right__cardTitle">Category</div>
             <div class="right__cardNumber"><?= $countCategory[0]['count'] ?></div>
             <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
         </a>
-        <a class="right__card" href="view_orders.html">
+        <a class="right__card" href="?act=bill">
             <div class="right__cardTitle">Bill</div>
             <div class="right__cardNumber"><?= $countBill[0]['count'] ?></div>
             <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>

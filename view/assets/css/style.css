@@ -7956,8 +7956,38 @@ input:focus {
   border-bottom: 3px solid #ff8e96;
   margin-bottom: 19px;
   min-height: 190px;
-  position: relative;
   background-color: #f6f5f3;
+  position: relative;
+}
+.product-wrapper .single-product-items .product-img::before {
+  content: "Flash Sale";
+  position: absolute;
+  align-items: center;
+  line-height: 27px;
+  font-size: 9px;
+  color: white;
+  border-radius: 3px;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 14%;
+  background: #ff9384;
+  display: none;
+}
+.product-wrapper .single-product-items .product-img::after {
+  content: "New";
+  position: absolute;
+  align-items: center;
+  line-height: 27px;
+  font-size: 9px;
+  color: white;
+  border-radius: 3px;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 14%;
+  background: #ff9438;
+  display: none;
 }
 .product-wrapper .single-product-items .product-img img {
   width: 100%;
