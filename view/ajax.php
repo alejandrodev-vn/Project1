@@ -105,6 +105,7 @@
                     GROUP BY productdetail.idProduct
                     ORDER BY SUM(billdetail.quantity) DESC LIMIT 6';
                 }
+                
             }
         }
         if(isset($_GET['price'])){
