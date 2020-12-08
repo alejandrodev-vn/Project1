@@ -27,7 +27,7 @@
                             <li>
                                 <ul>
                                     <li>
-                                        <select onchange="fill()" name="filterByPrice" id="filterByPrice">
+                                        <select onchange="filter()" name="filterByPrice" id="filterByPrice">
                                             <option value="0">Price:</option>
                                             <option value="1">High to Low</option>
                                             <option value="2">Low to High</option>
@@ -57,15 +57,14 @@
                 </div>
             </div>
             <script>
-            function fill() {
+            function filter() {
                 var price = document.getElementById("filterByPrice").value;
-                // var status = document.getElementById("filterByStatus").value;
                 var product = document.getElementById('productWrapper')
                 // alert(price)
                 $.ajax({
                     url: '../view/ajax.php',
                     type: 'GET',
-                    data: 'price=' + price + 'status=' + status,
+                    data: 'price=' + price,
                     success: function(data) {
                         var myObj = JSON.parse(data);
                         product.innerHTML = myObj[0];
@@ -79,6 +78,27 @@
                 });
                 return false;
             }
+            // function status(){
+            //     var status = document.getElementById("filterByStatus").value;
+            //     var product = document.getElementById('productWrapper')
+            //     // alert(price)
+            //     $.ajax({
+            //         url: '../view/ajax.php',
+            //         type: 'GET',
+            //         data: 'status=' + status,
+            //         success: function(data) {
+            //             var myObj = JSON.parse(data);
+            //             product.innerHTML = myObj[0];
+            //             x = 'index.php?act=shop';
+            //             for (i = 1; i < myObj.length; i++) {
+            //                 x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            //             }
+            //             history.pushState('', '', x)
+            //             // alert(data);
+            //         }
+            //     });
+            //     return false;
+            // }
             </script>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -138,40 +158,37 @@
                     <div class="row" id="productWrapper">
                         <!--single-product-->
                         <?php
-                        
                             foreach($products as $product)
-                                {
-                                     ?>
-                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
-                                        <div class="single-product-items mb-50 text-center">
-                                            <div class="product-img">
-                                                <img src="<?= $IMAGE_DIR.$product['imgUrl'] ?>" alt="product">
-                                                <div class="img-cap">
-                                                    <a href="../controller/cart.php?id=<?=$product['idProductDetail'];?>">Add to cart</a>
-                                                </div>
-                                                <div class="favorit-items">
-                                                    <span class="flaticon-heart"></span>
-                                                </div>
+                            echo '
+                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
+                                    <div class="single-product-items mb-50 text-center">
+                                        <div class="product-img">
+                                            <img src="../images/'.$product['imgUrl'].'" alt="product">
+                                            <div class="img-cap">
+                                                <a href="?act=cart&id='.$product['idProductDetail'].'">Add to cart</a>
                                             </div>
-                                            <div class="product-caption">
-                                                <h3><a href="?act=productDetail&id=<?=$product['idProduct']; ?>"><?=$product['nameProduct'];?></a></h3>
+                                            <div class="favorit-items">
+                                                <span class="flaticon-heart"></span>
                                             </div>
-                                            <div class="product-content">
-                                                <div class="price">
-                                                    <span class="new-price">$<?=$product['price'];?></span>
-                                                    <span class="old-price">$<?=$product['oldPrice'];?></span>
-                                                    <span class="discount">-<?= $product['note']; ?>%</span>
-                                                </div>
-                                                <div class="sold">
-                                                    <div class="percent"></div>
-                                                    <div class="text"><p>Rest: <?= $product['quantity']; ?></p></div>
-                                                </div>
-                                                <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
-                                            </div> 
                                         </div>
+                                        <div class="product-caption">
+                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'">'.$product['nameProduct'].'</a></h3>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="price">
+                                                <span class="new-price">$ '.$product['price'].'</span>
+                                                <span class="old-price">$ '.$product['oldPrice'].'</span>
+                                            </div>
+                                            <div class="sold">
+                                                <div class="percent"></div>
+                                                <div class="text"><p>Còn lại: 2</p></div>
+                                            </div>
+                                            <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
+                                        </div> 
                                     </div>
-                           <?php }; ?>
-                           
+                                </div>
+                                '; ?>
+
                         <!--single-product-->
                     </div>
                     <!--end row product-->
@@ -181,3 +198,139 @@
         </div>
     </section>
 </main>
+<script>
+function brand(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'brand=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+            // alert(data);
+        }
+    });
+    return false;
+}
+
+function group(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'group=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+            // alert(data);
+        }
+    });
+    return false;
+}
+
+function Top(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'category=Top&Top=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+        }
+    });
+    return false;
+}
+
+function Bottom(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'category=Bottom&Bottom=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+        }
+    });
+    return false;
+}
+
+function Shoes(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'category=Shoes&Shoes=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+        }
+    });
+    return false;
+}
+
+function Accessories(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'category=Accessories&Accessories=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+        }
+    });
+    return false;
+}
+
+function Watch(p) {
+    var product = document.getElementById('productWrapper')
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'category=Watch&Watch=' + p,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+        }
+    });
+    return false;
+}
+</script>

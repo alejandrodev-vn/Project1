@@ -1,8 +1,11 @@
 <?php
     session_start();
+<<<<<<< HEAD
     require_once ("../model/connect.php");
     require_once ("../model/shop.php");
     
+=======
+>>>>>>> 603e7eee9990e956e07e45e6c99386cc0813a8ea
     require_once("../model/connect.php");
     require_once("../model/shop.php");
 
