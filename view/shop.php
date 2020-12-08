@@ -56,50 +56,6 @@
                     </ul>
                 </div>
             </div>
-            <script>
-            function filter() {
-                var price = document.getElementById("filterByPrice").value;
-                var product = document.getElementById('productWrapper')
-                // alert(price)
-                $.ajax({
-                    url: '../view/ajax.php',
-                    type: 'GET',
-                    data: 'price=' + price,
-                    success: function(data) {
-                        var myObj = JSON.parse(data);
-                        product.innerHTML = myObj[0];
-                        x = 'index.php?act=shop';
-                        for (i = 1; i < myObj.length; i++) {
-                            x += '&' + myObj[i][0] + '=' + myObj[i][1]
-                        }
-                        history.pushState('', '', x)
-                        // alert(data);
-                    }
-                });
-                return false;
-            }
-            // function status(){
-            //     var status = document.getElementById("filterByStatus").value;
-            //     var product = document.getElementById('productWrapper')
-            //     // alert(price)
-            //     $.ajax({
-            //         url: '../view/ajax.php',
-            //         type: 'GET',
-            //         data: 'status=' + status,
-            //         success: function(data) {
-            //             var myObj = JSON.parse(data);
-            //             product.innerHTML = myObj[0];
-            //             x = 'index.php?act=shop';
-            //             for (i = 1; i < myObj.length; i++) {
-            //                 x += '&' + myObj[i][0] + '=' + myObj[i][1]
-            //             }
-            //             history.pushState('', '', x)
-            //             // alert(data);
-            //         }
-            //     });
-            //     return false;
-            // }
-            </script>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <aside id="filter" class="hidden-xs hidden-sm">
@@ -188,7 +144,6 @@
                                     </div>
                                 </div>
                                 '; ?>
-
                         <!--single-product-->
                     </div>
                     <!--end row product-->
@@ -198,7 +153,52 @@
         </div>
     </section>
 </main>
+
 <script>
+function filter() {
+    var price = document.getElementById("filterByPrice").value;
+    var product = document.getElementById('productWrapper')
+    // alert(price)
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'price=' + price,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+            // alert(data);
+        }
+    });
+    return false;
+}
+
+function status() {
+    var status = document.getElementById("filterByStatus").value;
+    var product = document.getElementById('productWrapper')
+    // alert(price)
+    $.ajax({
+        url: '../view/ajax.php',
+        type: 'GET',
+        data: 'status=' + status,
+        success: function(data) {
+            var myObj = JSON.parse(data);
+            product.innerHTML = myObj[0];
+            x = 'index.php?act=shop';
+            for (i = 1; i < myObj.length; i++) {
+                x += '&' + myObj[i][0] + '=' + myObj[i][1]
+            }
+            history.pushState('', '', x)
+            // alert(data);
+        }
+    });
+    return false;
+}
+
 function brand(p) {
     var product = document.getElementById('productWrapper')
     $.ajax({

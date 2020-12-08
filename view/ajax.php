@@ -90,24 +90,23 @@
         if(!empty($_SESSION['group'])){
             $where .= !empty($where) ? ' and products.idProduct in(Select products.idProduct from products INNER JOIN category ON category.idCategory = products.idCategory INNER JOIN groupproduct ON category.idGroupProduct = groupproduct.idGroupProduct where groupproduct.idGroupProduct = '.$_SESSION['group']['value'].')' : ' INNER JOIN category ON category.idCategory = products.idCategory INNER JOIN groupproduct ON category.idGroupProduct = groupproduct.idGroupProduct where groupproduct.idGroupProduct = '.$_SESSION['group']['value'].'';
         }
-        // if(isset($_GET['status'])){
-        //     $value = $_GET['status'];
-        //     if($value == 0){
-        //         $where .='';
-        //     }else if($value == 1){
-        //         if(!empty($where)){
-        //             $where .= ' and products.idProduct in(SELECT DISTINCT *, SUM(billdetail.quantity) AS times
-        //             FROM bill inner join billdetail on bill.idBill= billdetail.idBill inner join productdetail on billdetail.idProductDetail = productdetail.idProductDetail inner join products on products.idProduct = productdetail.idProduct
-        //             GROUP BY productdetail.idProduct
-        //             ORDER BY times DESC LIMIT 6)'
-        //         }else{
-        //             $select = ''
-        //         }
-        //          ' *, SUM(billdetail.quantity) AS times
-        //         FROM bill inner join billdetail on bill.idBill= billdetail.idBill inner join productdetail on billdetail.idProductDetail = productdetail.idProductDetail inner join products on products.idProduct = productdetail.idProduct
-        //         GROUP BY productdetail.idProduct
-        //         ORDER BY times DESC LIMIT 6';
-        // }
+        if(isset($_GET['status'])){
+            $value = $_GET['status'];
+            if($value == 0){
+                $where .='';
+            }else if($value == 1){
+                if(!empty($where)){
+                    $where .= ' and products.idProduct in(SELECT products.idProduct
+                    FROM products inner join productdetail on products.idProduct = productdetail.idProduct inner join billdetail on billdetail.idProductDetail = productdetail.idProductDetail inner join bill on bill.idBill= billdetail.idBill
+                    GROUP BY productdetail.idProduct
+                    ORDER BY SUM(billdetail.quantity) DESC LIMIT 6)';
+                }else{
+                    $where .= ' inner join billdetail on billdetail.idProductDetail = productdetail.idProductDetail inner join bill on bill.idBill= billdetail.idBill
+                    GROUP BY productdetail.idProduct
+                    ORDER BY SUM(billdetail.quantity) DESC LIMIT 6';
+                }
+            }
+        }
         if(isset($_GET['price'])){
             $value = $_GET['price'];
             if($value == 0){
@@ -165,5 +164,6 @@
         }
         echo json_encode($myArr);
         // echo $where;
+        // print_r($_SESSION['filter']);
         }
     
