@@ -16,8 +16,38 @@
             border-bottom: 3px solid #ff8e96;
             margin-bottom:19px;
             min-height: 190px;
-            position: relative;
             background-color: rgb(246, 245, 243);
+            position: relative;
+            &::before{
+                content: "Flash Sale";
+                position: absolute;
+                align-items: center;
+                line-height: 27px;
+                font-size: 9px;
+                color: white;
+                border-radius: 3px;
+                top: 0;
+                left: 0;
+                width: 30%;
+                height: 14%;
+                background: #ff9384;
+                display: none;
+            }
+            &::after{
+                content: "New";
+                position: absolute;
+                align-items: center;
+                line-height: 27px;
+                font-size: 9px;
+                color: white;
+                border-radius: 3px;
+                top: 0;
+                left: 0;
+                width: 30%;
+                height: 14%;
+                background: #ff9438;
+                display: none;
+            }
             img {
                 width:100%;
                 object-fit: contain;

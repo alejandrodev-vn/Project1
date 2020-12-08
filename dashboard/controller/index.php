@@ -141,6 +141,7 @@ if (isset($_GET['act'])) {
         case 'category':
             $table = $_GET['act'];
             $data = $db->getObject($table);
+            $data_group = $db->getObject('groupproduct');
             $VIEW_NAME = '../view/admin/category/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -173,7 +174,7 @@ if (isset($_GET['act'])) {
                 if (isset($_POST['update']) && ($_POST['update'])) {
                     $data = [
                         'nameCategory' => $_POST['nameProduct'],
-                        'nameGroupProduct' => $_POST['nameGroupProduct']
+                        'idGroupProduct' => $_POST['idGroupProduct']
                     ];
                     if ($db->insert($table, $data))
                         $message = "Cập nhật thành công";
@@ -305,7 +306,7 @@ if (isset($_GET['act'])) {
             break;
         case 'bill':
             $table = $_GET['act'];
-            $data = $db->getObjectSelect($table,0,'status');
+            $data = $db->getObjectSelect($table,1,'status');
             $VIEW_NAME = '../view/admin/bill/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];

@@ -111,15 +111,15 @@
         if(isset($_GET['price'])){
             $value = $_GET['price'];
             if($value == 0){
-                $where .='';
+                $where .=' GROUP BY idProduct';
             }else if($value == 1){
-                $where .= ' order by price desc';
+                $where .= ' GROUP BY idProduct order by price desc';
             }else if($value == 2){
-                $where .= ' order by price asc';
+                $where .= ' GROUP BY idProduct order by price asc';
             }else if($value == 3){
-                $where .= ' order by date asc';
+                $where .= ' GROUP BY idProduct order by date asc';
             }else if($value == 4){
-                $where .= ' order by flashSale asc';
+                $where .= ' GROUP BY idProduct order by flashSale asc';
             }
         }
         $getProduct = getAllProductByFilter($where);
@@ -147,7 +147,7 @@
                         </div>
                         <div class="sold">
                             <div class="percent"></div>
-                            <div class="text"><p>Còn lại: 2</p></div>
+                            <div class="text"><p>Rest: '.$product['quantity'].'</p></div>
                         </div>
                         <div class="countdown" id="countdown"><p>1 ngày 15:23:17</p></div>
                     </div> 
