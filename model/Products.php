@@ -34,5 +34,15 @@
         $data = $stmt->fetchAll();
         return $data;
     }
+    function insertbill($conn){
+        $sql = "INSERT INTO bill (idBill, idUser, total, date, status)";
+        $stmt = $conn->prepare($sql);
+        $stmt = execute();
+        
+
+    }
+
+
+    
 ?>
 

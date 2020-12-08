@@ -178,10 +178,10 @@
               <div class="checkout_btn_inner float-right">
               
                 <a class="btn_1" href="#">Continue Shopping</a>
-                <!-- <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a> -->
-                <form action="checkout.php" method="post">
+                <a class="btn_1 checkout_btn_1" href="index.php?act=checkout">Proceed to checkout</a>
+                <!-- <form action="bill.php" method="post">
                 <button name="btn_thanhtoan" type="submit" class="btn_1 checkout_btn_1"> Proceed to checkout</button>
-                </form>
+                </form> -->
               </div>
             </div>
           </div>

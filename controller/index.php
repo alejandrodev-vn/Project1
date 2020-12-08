@@ -1,14 +1,11 @@
 <?php
     session_start();
-<<<<<<< HEAD
     require_once ("../model/connect.php");
     require_once ("../model/shop.php");
     
-=======
     require_once("../model/connect.php");
     require_once("../model/shop.php");
 
->>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
 //    connect();
         $conn = connect();
         $IMAGE_DIR =  "../images/";
@@ -19,6 +16,9 @@
                             
             case 'about':
                     include "../view/about.php";
+                    break;
+            case 'checkouttr':
+                    echo 'Thanh toán thành công';
                     break;
             case 'blog-details':
                     include "../view/blog-details.php";
@@ -32,7 +32,9 @@
             case 'cart':
                     break;
             case 'checkout':
+                    
                     include "../view/checkout.php";
+                    
                     break;
             case 'confirmation':
                     include "../view/confirmation.php";
@@ -49,11 +51,8 @@
                     }else {
                         $pro=0;
                     }
-<<<<<<< HEAD
                     // echo"<pre>";
                     // print_r($data);
-=======
->>>>>>> 4d5b20c6f42f5fac42c83397185a4af2811067d8
                     include "../view/product_details.php";
                     
                     break;

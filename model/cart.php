@@ -7,3 +7,4 @@ function getProductDetailId($conn, $id) {
     return $data;
 }
 
+
