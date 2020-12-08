@@ -1,7 +1,9 @@
 
   <main>
   <?php
+ 
   $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];
+  
 // echo'<pre>';
 //   var_dump($cart);
   // var_dump($_SESSION['username']);

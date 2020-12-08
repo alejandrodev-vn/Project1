@@ -1,4 +1,5 @@
 <?php
+echo 'cc';
 session_start();
 include "../model/cart.php"; 
 include "../model/connect.php";
@@ -39,17 +40,12 @@ if($action == 'add'){
     }
 }
 
-if($action == 'update'){   
-    foreach ( $_SESSION['cart']['id'] as $k => $v){    
-
-        $v['quantity'] = $quantity;   
-    
-    }
+if($action == 'update'){       
+$_SESSION['cart']['id']['quantity']=$quantity;
 }
-
 if($action == 'delete'){
     unset($_SESSION['cart'][$id]);
 
 }
-header("location: index.php?act=shopping-cart");
+    header("location: index.php?act=shopping-cart");
 
