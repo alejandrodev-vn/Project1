@@ -52,6 +52,9 @@
                 <label>% discount : </label>
                 <input type="text" name="note" class="form-control" value="">
             </div>
+            <div class="form-group">
+                <label for="description"> Description :</label> <textarea name="description" cols="30" rows="10"><?= $data->description ?></textarea>
+            </div>
 
             <input name="update" type="submit" value="Thêm" class="btn-submit">
         </form>

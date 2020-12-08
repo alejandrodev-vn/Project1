@@ -173,7 +173,7 @@
                                             </div>
                                         </div>
                                         <div class="product-caption">
-                                            <h3><a href="?act=productDetail&id='.$product['idProduct'].'"><?=$product['nameProduct']?></a></h3>
+                                            <h3><a href="?act=productDetail&id=<?=$product['idProduct']?>"><?=$product['nameProduct']?></a></h3>
                                         </div>
                                         <div class="product-content">
                                             <div class="price">
