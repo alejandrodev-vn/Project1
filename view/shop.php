@@ -179,6 +179,7 @@
                                             <div class="price">
                                                 <span class="new-price">$<?=$product['price']?></span>
                                                 <span class="old-price">$<?=$product['oldPrice']?></span>
+                                                <span class="discount">$<?=$product['note']?></span>
                                             </div>
                                             <div class="sold">
                                                 <div class="percent"></div>

@@ -17,7 +17,7 @@
                     <div class="right__title">DASHBOARD</div>
                     <div class="right__cards">
         <a class="right__card" href="?act=products">
-            <div class="right__cardTitle">Quantity</div>
+            <div class="right__cardTitle">Products</div>
             <div class="right__cardNumber"><?= $countProducts[0]['count'] ?></div>
             <div class="right__cardDesc">See more <img src="../public/assets/arrow-right.svg" alt=""></div>
         </a>

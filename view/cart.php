@@ -49,7 +49,7 @@
                 <?php
                 $total_price = 0; ?>
                 <?php foreach($cart as $k =>$v):
-                 $total_price += ((float)$v['price'] * (int)$v['quantity']);
+                 $total_price += ($v['price'] * $v['quantity']);
                 ?>
                   <tr>
                     <td>
@@ -95,7 +95,7 @@
                   <?php endforeach ?>
                   <tr class="bottom_button">
                     <td>
-                    <button type="submit" class="btn_1"> Update Cart</button>
+                    <button type="submit" class="btn"> Update Cart</button>
                       <!-- <a class="btn_1" href="">Update Cart</a> -->
                     </td>
                     <td></td>
@@ -106,7 +106,7 @@
                     <td></td>
                     <td>
                       <div class="cupon_text float-right">
-                        <a class="btn_1" href="#">Close Coupon</a>
+                        <a class="btn" href="#">Close Coupon</a>
                       </div>
                     </td>
                   </tr>
@@ -171,7 +171,7 @@
                           <option value="4">Select a State</option>
                         </select>
                         <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
-                        <a class="btn_1" href="#">Update Details</a>
+                        <a class="btn" href="#">Update Details</a>
                       </div>
                     </td>
                   </tr>
@@ -179,8 +179,8 @@
               </table>
               <div class="checkout_btn_inner float-right">
               
-                <a class="btn_1" href="#">Continue Shopping</a>
-                <a class="btn_1 checkout_btn_1" href="index.php?act=checkout">Proceed to checkout</a>
+                <a class="submit_btn" href="#">Continue Shopping</a>
+                <a class="submit_btn checkout_btn_1" href="index.php?act=checkout">Proceed to checkout</a>
                 <!-- <form action="bill.php" method="post">
                 <button name="btn_thanhtoan" type="submit" class="btn_1 checkout_btn_1"> Proceed to checkout</button>
                 </form> -->
