@@ -1,18 +1,8 @@
 <?php
     session_start();
-<<<<<<< HEAD
-    require_once ("../model/connect.php");
-    require_once ("../model/shop.php");
-   
-=======
 
     require_once ("../model/connect.php");
-    require_once ("../model/shop.php");
-    
-
-
->>>>>>> 49e4ce6b0cde1b4389d78ab306673bfed68270b6
-
+    require_once ("../model/shop.php");  
 //    connect();
         $conn = connect();
         $IMAGE_DIR =  "../images/";
