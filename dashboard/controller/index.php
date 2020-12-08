@@ -1,6 +1,6 @@
 <?php
 include "../core/app.php";
-// check_role1();
+check_role1();
 
 require_once("../model/function.php");
 $db = new Database();
@@ -8,11 +8,11 @@ $countProducts= $db->countData('idProduct','products');
 $countUser= $db->countData('idUser','user');
 $countCategory= $db->countData('idCategory','category');
 $countBill= $db->countData('idBill','bill');
-include_once("../core/app.php");
-if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
-    $data = $_SESSION['username'];
-    echo $data->idUser;
-}
+// include_once("../core/app.php");
+// // if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
+// //     $data = $_SESSION['username'];
+// //     echo $data->idUser;
+// // }
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];

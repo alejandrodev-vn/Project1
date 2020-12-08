@@ -38,14 +38,15 @@ if($action == 'add'){
         $_SESSION['cart'] [$id] = $i;
     }
 }
-if($action == 'update'){    
-    foreach ( $_SESSION['cart'][$id] as $k => $v){
 
-        $k = $_SESSION['cart'][$id]['quantity'] = $quantity;
+if($action == 'update'){   
+    foreach ( $_SESSION['cart']['id'] as $k => $v){    
 
-    }
+        $v['quantity'] = $quantity;   
     
+    }
 }
+
 if($action == 'delete'){
     unset($_SESSION['cart'][$id]);
 
