@@ -1,5 +1,4 @@
 <?php
-echo 'cc';
 session_start();
 include "../model/cart.php"; 
 include "../model/connect.php";

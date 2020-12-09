@@ -387,7 +387,7 @@ if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
 
     $('aside#filter  .filter__tree-content li label').click(function (){
       $('label').removeClass('checkbox-checked');
-      $(this).addClass('checkbox-checked');
+      $(this).toggleClass('checkbox-checked');
     })
   
     // //Top
