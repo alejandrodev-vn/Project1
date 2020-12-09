@@ -70,7 +70,7 @@
                                         <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
                                         <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                                     </div>
-                                    <p>$5</p>
+                                 
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="#" class="btn">add to cart</a>
