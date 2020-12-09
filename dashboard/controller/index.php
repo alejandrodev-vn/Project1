@@ -431,7 +431,7 @@ if (isset($_GET['act'])) {
         case 'highQuantity': 
             { 
                 $data = $db->getHighQuantity();
-                $VIEW_NAME='../view/admin/statistical/HighQuantity.php';
+                $VIEW_NAME='../view/admin/statistical/highQuantity.php';
             }
         break;
         case 'revenue': 

@@ -15,7 +15,7 @@
                     include "../view/about.php";
                     break;
             case 'checkouttr':
-                    echo 'Thanh toán thành công';
+                     echo "<script type='text/javascript'>alert('Thanh toán thành công');</script>";
                     break;
             case 'blog-details':
                     include "../view/blog-details.php";
@@ -119,6 +119,43 @@
                                 echo "<script type='text/javascript'>alert('$message');</script>";
                         }
                 break;
+        case "create_account":
+                // echo "hahaa";
+                // $msg = "Please enter your infomation";
+
+                // $full_name = "";
+                // $email = "";
+                // $address = "";
+                // $phone = "";
+                // $date = "";
+                // $username = "";
+                // $password = "";
+                include "../model/create-account.php";
+                include '../view/login/create-account.php';
+                if(isset($_POST["create"])) {
+                        $full_name = $_POST["full_name"];
+                        $email = $_POST["email"];
+                        $address = $_POST["address"];
+                        $phone = $_POST["phone"];
+                        $date = $_POST["date"];
+                        $username = $_POST["username"];
+                        $password = $_POST["password"];
+
+                        if(empty($full_name) || empty($email) || empty($address) || empty($phone) || empty($date) || empty($username) || empty($password)) {
+                                echo "<script type='text/javascript'>alert('Vui lòng điền đầy đủ các trường để đăng ký');</script>";
+                        } else {
+                                $result = create_account($conn, $full_name, $email, $address, $phone, $date, $username, $password);
+                                if($result) {
+                                        echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>"; 
+                                } else {
+                                        echo "<script type='text/javascript'>alert('Đăng ký thất bại');</script>"; 
+                                }
+                        }
+
+                       
+                }
+
+        break;
 
             case 'cart':
                         include_once "../view/cart.php";
