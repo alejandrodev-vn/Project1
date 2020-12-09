@@ -20,16 +20,16 @@
             <br><br><br>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label>ID Product :</label>
-                    <?php echo $data->idProduct ?>
+                    <label>Name Product :</label>
+                    <?php echo $data_prd->nameProduct ?>
                 </div>
                 <div class="form-group">
                     <label>Color : </label>
-                    <input type="text" name="color" class="form-control" required value="<?= $data->color ?>">
+                    <input type="text" name="color" class="form-control"  value="<?= $data->color ?>">
                 </div>
                 <div class="form-group">
                     <label>Size : </label>
-                    <input type="text" name="size" class="form-control" required value="<?=$data->size?>" >
+                    <input type="text" name="size" class="form-control"  value="<?=$data->size?>" >
                 </div>
                 <div class="form-group">
                     <label>Price : </label>

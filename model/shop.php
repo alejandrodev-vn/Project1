@@ -20,7 +20,7 @@
         return query($sql);
     }
     function getAllProductByFilter($where){
-        $sql = "select products.idProduct, products.nameProduct, products.idCategory, products.idBrand, products.imgUrl, price, oldPrice,quantity ,productdetail.idProductDetail from products inner join productdetail on products.idProduct = productdetail.idProduct $where";
+        $sql = "select products.idProduct, products.nameProduct, products.idCategory, products.idBrand, products.imgUrl, products.note, price, oldPrice,quantity ,productdetail.idProductDetail from products inner join productdetail on products.idProduct = productdetail.idProduct $where";
         return query($sql);
     }
 ?>

@@ -7,7 +7,7 @@
 
   // var_dump($_SESSION['username']);
   // session_destroy();
-  //   die(); 
+    // die(); 
   
   ?>
 
@@ -36,7 +36,7 @@
                   <tr>
                     <th scope="col">Product</th>
                     <th scope="col">ID</th>
-                    <th scope="col">color</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Size</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
@@ -88,7 +88,7 @@
                       <h5>$<?=(float)$v['price']*(int)$v['quantity']?>.00</h5>
                     </td>
                     <td>
-                    <a href="cart.php?id=<?php echo $v['id'] ?>&action=delete">del</a>
+                    <a style="color:red;font-weight:bold;" href="cart.php?id=<?php echo $v['id'] ?>&action=delete">X</a>
                     </td>
                   </tr>
                  
@@ -104,11 +104,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                      <div class="cupon_text float-right">
-                        <a class="btn" href="#">Close Coupon</a>
-                      </div>
-                    </td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   
                   <tr>
@@ -118,12 +115,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                      <h5>Subtotal</h5>
-                    </td>
-                    <td>
-                      <h5>$<?=$total_price?>.00</h5>
-                    </td>
+                   
                   </tr>
                   </form>
                   <tr class="shipping_area">
@@ -134,45 +126,10 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <h5>Shipping</h5>
+                      <h3>Subtotal</h3>
                     </td>
                     <td>
-                      <div class="shipping_box">
-                        <ul class="list">
-                          <li>
-                            Flat Rate: $5.00
-                            <input type="radio" name="shipping" aria-label="Radio button for following text input">
-                          </li>
-                          <li>
-                            Free Shipping
-                            <input type="radio" name="shipping" aria-label="Radio button for following text input">
-                          </li>
-                          <li>
-                            Flat Rate: $10.00
-                            <input type="radio" name="shipping" aria-label="Radio button for following text input">
-                          </li>
-                          <li class="active">
-                            Local Delivery: $2.00
-                            <input type="radio" name="shipping" aria-label="Radio button for following text input">
-                          </li>
-                        </ul>
-                        <h6>
-                          Calculate Shipping
-                          <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </h6>
-                        <select class="shipping_select">
-                          <option value="1">Bangladesh</option>
-                          <option value="2">India</option>
-                          <option value="4">Pakistan</option>
-                        </select>
-                        <select class="shipping_select section_bg">
-                          <option value="1">Select a State</option>
-                          <option value="2">Select a State</option>
-                          <option value="4">Select a State</option>
-                        </select>
-                        <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
-                        <a class="btn" href="#">Update Details</a>
-                      </div>
+                      <h3>$<?=$total_price?>.00</h3>
                     </td>
                   </tr>
                 </tbody>

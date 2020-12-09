@@ -100,7 +100,7 @@ if (isset($_GET['act'])) {
                         $img = $db->save_file('imgUrl', $IMAGE_DIR);
                     $data = [
                         'idProduct' => $id,
-                        'color' => $_POST['color'],
+                        'color' =>$data_prd->nameProduct.' '. $_POST['color'],
                         'size' => $_POST['size'],
                         'price' => $_POST['price'],
                         'oldPrice' => $_POST['oldPrice'],
@@ -118,12 +118,13 @@ if (isset($_GET['act'])) {
                 $id = (int)$_GET['editDetail'];
                 $data = $db->getRowObject('productdetail', $id, 'idProductDetail');
                 $id_prd = $data->idProduct;
+                $data_prd = $db->getRowObject($table, (int)$id_prd, 'idProduct');
                 $VIEW_NAME = '../view/admin/product/editDetail.php';
                 if (isset($_POST['update']) && ($_POST['update'])) {
                     if ($db->save_file('imgUrl', $IMAGE_DIR))
                         $img = $db->save_file('imgUrl', $IMAGE_DIR);
                     $data = [
-                        'color' => $_POST['color'],
+                        'color' =>$data_prd->nameProduct.' '. $_POST['color'],
                         'size' => $_POST['size'],
                         'price' => $_POST['price'],
                         'oldPrice' => $_POST['oldPrice'],
