@@ -68,7 +68,7 @@
                                         unset($_SESSION['group']);
                                             foreach($brand as $brands){
                                                 echo '
-                                                    <li><input type="checkbox" name="checkboxStatus" value="louis-vuitton" hidden><label  onclick = "brand('.$brands['idThuongHieu'].');">'.$brands['nameBrand'].'<span class="checkbox-x"></span></label></li>
+                                                    <li><label><input onclick = "brand('.$brands['idThuongHieu'].');" type="checkbox" name="checkboxStatus" value="louis-vuitton" hidden>'.$brands['nameBrand'].'<span class="checkbox-x"></span></label></li>
                                                 ';
                                             }
                                         ?>
@@ -80,7 +80,7 @@
                                     <?php
                                         foreach($group as $groups){
                                             echo '
-                                                <li><input type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden><label onclick = "group('.$groups['idGroupProduct'].');">'.$groups['nameGroupProduct'].'<span class="checkbox-x"></span></label></li>
+                                                <li><label><input onclick = "group('.$groups['idGroupProduct'].');" type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden>'.$groups['nameGroupProduct'].'<span class="checkbox-x"></span></label></li>
                                             ';
                                         }
                                     ?>
@@ -97,7 +97,7 @@
                                         $category = getAllGroupProductById($id);
                                         foreach($category as $c){
                                             echo '
-                                            <li><input type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden><label onclick = "'.$groups['nameGroupProduct'].'('.$c['idCategory'].')">'.$c['nameCategory'].'<span class="checkbox-x"></span></label></li>
+                                            <li><label><input onclick = "'.$groups['nameGroupProduct'].'('.$c['idCategory'].')" type="checkbox" id="filterTop" name="checkboxStatus" value="top" hidden>'.$c['nameCategory'].'<span class="checkbox-x"></span></label></li>
                                             ';
                                         }
                                     echo '                                       
