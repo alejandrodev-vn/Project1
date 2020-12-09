@@ -3045,8 +3045,9 @@ header .header-area .main-header .menu-wrapper .header-right ul {
 header .header-area .main-header .menu-wrapper .header-right ul li {
   transition: 0.4s;
 }
-header .header-area .main-header .menu-wrapper .header-right ul li:not(:first-child):hover {
-  transform: scale(1.3);
+header .header-area .main-header .menu-wrapper .header-right ul li:hover a span {
+  transition: 0.4s;
+  text-decoration: underline;
 }
 header .header-area .main-header .menu-wrapper .header-right .nav-search {
   display: inline-block;
@@ -7955,9 +7956,14 @@ input:focus {
   overflow: hidden;
   border-bottom: 3px solid #ff8e96;
   margin-bottom: 19px;
-  min-height: 190px;
+  height: 190px;
   background-color: #f6f5f3;
   position: relative;
+}
+@media (max-width: 575px) {
+  .product-wrapper .single-product-items .product-img {
+    height: auto;
+  }
 }
 .product-wrapper .single-product-items .product-img::before {
   content: "Flash Sale";
@@ -8086,7 +8092,7 @@ input:focus {
   background: #ff9438;
   align-items: center;
   border-radius: 2px;
-  line-height: 24px;
+  line-height: 16px;
   margin-left: 8px;
   padding: 3px 1px;
   font-size: 15px;

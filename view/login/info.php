@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <div>
-            <div>TÀI KHOẢN</div>
+    <style>
+        .profile__wrapper{
+            width:50%;
+            margin:0 auto;
+        }
+    </style>
+        <div class="container profile__wrapper">
+            <div class="row">
+            <div class="col-lg-12" ><h3>Profile: </h3> </div>
 <div>
                 <div>
-                    xin chào:
+                
                     <?= $_SESSION['username']['fullName']?>
                 </div>
                 <!-- <li><a href="?act=login&logout" onclick="tai_lai_trang()">Đăng xuất</a></li> -->
@@ -20,6 +24,5 @@
                     }
                 ?>
             </div>
+            </div>
         </div>        
-    </body>
-</html>

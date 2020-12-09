@@ -15,9 +15,12 @@
             overflow:hidden;
             border-bottom: 3px solid #ff8e96;
             margin-bottom:19px;
-            min-height: 190px;
+            height: 190px;
             background-color: rgb(246, 245, 243);
             position: relative;
+            @media #{$xs} {
+                height: auto;
+            }
             &::before{
                 content: "Flash Sale";
                 position: absolute;
@@ -142,7 +145,7 @@
                             background: #ff9438;
                             align-items: center;
                             border-radius: 2px;
-                            line-height: 24px;
+                            line-height: 16px;
                             margin-left: 8px;
                             padding: 3px 1px;
                             font-size: 15px;

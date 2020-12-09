@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label>Color : </label>
-                <input type="text" name="color" class="form-control" required value="">
+                <input type="text" name="color" class="form-control" value="">
             </div>
             <div class="form-group">
                 <label>Size : </label> 

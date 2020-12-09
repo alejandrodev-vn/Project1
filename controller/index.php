@@ -41,10 +41,16 @@
                     break;
             case 'productDetail':
                     include "../model/Products.php";
+                    include "../model/ProductDetail.php";
                     $data = "";
+                    $size = "";
                     if(isset($_GET['id'])&&$_GET['id']>0){
                         $id= $_GET['id'];
                         $data = getProductDetail($conn, $id);
+                        if(isset($_GET['idDetail'])&&$_GET['idDetail']>0){
+                                $idDetail= $_GET['idDetail'];
+                                $size = getProductDetailById($conn, $idDetail);
+                        }
                     }else {
                         $pro=0;
                     }

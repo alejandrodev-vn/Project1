@@ -24,20 +24,12 @@
                                 <div class="single_product_img-main col-lg-12">
                                     <a href="#"><img src="<?= $IMAGE_DIR.$data[0]['imgUrl']; ?>" alt="product" class="img-fluid"></a>
                                 </div>
-                                <div class="single_product_select">
+                        
+                                <!-- <div class="single_product_select">
                                     <div class="single_product_img col-lg-3">
                                         <a href="#"><img src="<?= $IMAGE_DIR.$data[0]['imgUrl']; ?>" alt="product" class="img-fluid"></a>
                                     </div> 
-                                    <div class="single_product_img col-lg-3">
-                                        <a href="#"><img src="<?= $IMAGE_DIR.$data[0]['imgUrl']; ?>" alt="product" class="img-fluid"></a>
-                                    </div>   
-                                    <div class="single_product_img col-lg-3">
-                                    <a href="#"><img src="<?= $IMAGE_DIR.$data[0]['imgUrl']; ?>" alt="product" class="img-fluid"></a> 
-                                    </div>   
-                                    <div class="single_product_img col-lg-3">
-                                        <a href="#"><img src="<?= $IMAGE_DIR.$data[0]['imgUrl']; ?>" alt="product" class="img-fluid"></a>
-                                    </div>
-                                </div>            
+                                </div>             -->
                             </div>
                         </div>
                     </div>
@@ -64,7 +56,7 @@
                             <p <?php if($data[0]['size']=="") echo 'style="display:none;"';else echo 'style="display:block;"'  ?> >Choose Size:</p>
                             <div class="choose__size">
                                 <?php foreach($data as $data){ if($data['size']!==""){ ?>
-                                <a href="#" class="choose__size-item"><?= $data['size']?>
+                                <a href="?act=productDetail&id=<?=$data['idProduct']?>&idDetail=<?=$data['idProductDetail']?>" class="choose__size-item"><?= $data['size']?>
                                     <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/attribute.svg" alt="active">
                                 </a>
                                 <?php }}?>
@@ -78,7 +70,7 @@
                                         <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
                                         <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                                     </div>
-                                    <p>$5</p>
+                                 
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="#" class="btn">add to cart</a>

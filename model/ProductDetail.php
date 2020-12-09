@@ -1,9 +1,16 @@
-<?php 
-    function getFlashSale($conn) {
-        $sql = "SELECT products.`idProduct` , products.`nameProduct`,productDetail.`idProductDetail`,productDetail.`price` , productDetail.`oldPrice`,products.`imgUrl` , productDetail.`size`,productDetail.`quantity`,products.`flashSale`,products.`note`,products.`date` FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` WHERE products.`flashSale` = 1 GROUP BY idProduct LIMIT 6";
+<?php   
+    function getProductDetail($conn, $id) {
+        $sql = "SELECT * FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` WHERE products.`idProduct` = '$id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
+        return $data;
+    }
+    function getProductDetailById($conn, $id) {
+        $sql = "SELECT * FROM `products`AS products INNER JOIN `productdetail` AS productDetail ON productDetail.`idProduct` = products.`idProduct` WHERE productDetail.`idProductDetail` = '$id'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetch();
         return $data;
     }
 ?>
