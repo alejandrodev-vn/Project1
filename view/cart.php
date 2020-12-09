@@ -4,8 +4,7 @@
  
   $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];
   
-// echo'<pre>';
-//   var_dump($cart);
+
   // var_dump($_SESSION['username']);
   // session_destroy();
   //   die(); 
@@ -49,13 +48,13 @@
                 <?php
                 $total_price = 0; ?>
                 <?php foreach($cart as $k =>$v):
-                 $total_price += ((float)$v['price'] * (int)$v['quantity']);
+                 $total_price += ((float)$v['price'] * (int)$v['quantity']);            
                 ?>
                   <tr>
                     <td>
                       <div class="media">
                         <div class="d-flex">
-                          <img src="../view/assets/img/gallery/card1.png" alt="" />
+                          <img src="../images/<?=$v['img']?>" alt="" />
                         </div>
                         <div class="media-body">
                           <p></p>

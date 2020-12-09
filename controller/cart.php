@@ -40,8 +40,8 @@ if($action == 'add'){
     }
 }
 
-if($action == 'update'){       
-$_SESSION['cart']['id']['quantity']=$quantity;
+if($action == 'update'){
+    $_SESSION['cart'][$id]['quantity'] = $quantity;
 }
 if($action == 'delete'){
     unset($_SESSION['cart'][$id]);
