@@ -3463,7 +3463,7 @@ header .search button:hover {
   -o-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
 }
-.single-flash-sale .flash-sale-cart span {
+.single-flash-sale .flash-sale-cart a {
   color: #fff;
   background: linear-gradient(90deg, #ff8e96 35%, #ff9438bf 100%);
   padding: 20px 0;
@@ -3622,7 +3622,7 @@ header .search button:hover {
   -o-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
 }
-.popular-wrapper .single-popular-items .popular-img .img-cap span {
+.popular-wrapper .single-popular-items .popular-img .img-cap a {
   color: #fff;
   background: linear-gradient(90deg, #ff8e96 35%, #ff9438bf 100%);
   padding: 20px 0;
@@ -9393,6 +9393,9 @@ aside .filter__tree-content label.checkbox-checked .checkbox-x {
   font-family: "Playfair Display", serif;
   color: #ff9438;
   border-bottom: 0px !important;
+}
+.cart_inner .table tr.bottom_button {
+  border-bottom: 1px solid #dfdfdf;
 }
 .cart_inner .table tbody tr td {
   padding-top: 30px;

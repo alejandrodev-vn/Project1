@@ -73,7 +73,7 @@
                                  
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="#" class="btn">add to cart</a>
+                                    <a class="btn" href="cart.php?id=<?=$data['idProductDetail']?>">Add to cart</a>
                                 </div>
                             </div>
                     </div>

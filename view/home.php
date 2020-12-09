@@ -83,7 +83,7 @@
                                 <div class="flash-sale-img">
                                     <img src="<?= $IMAGE_DIR.$val['imgUrl']; ?>" alt="collection">
                                     <div class="flash-sale-cart">
-                                    <span>Add to cart</span>
+                                    <a href="cart.php?id=<?=$val['idProductDetail']?>">Add to cart</a>
                                 </div>
                                 </div>
                                 <div class="flash-sale-caption">
@@ -160,7 +160,7 @@
                             <div class="popular-img">
                                 <img src="<?= $IMAGE_DIR.$val['imgUrl']; ?>" alt="Best Seller">
                                 <div class="img-cap">
-                                    <span>Add to cart</span>
+                                    <a href="cart.php?id=<?=$val['idProductDetail']?>">Add to cart</a>
                                 </div>
                                 <div class="favorit-items">
                                     <span class="flaticon-heart"></span>
@@ -215,7 +215,7 @@
                                 <p style="display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;text-overflow: ellipse;overflow: hidden;">
                                     <?= $newProduct['description']?>
                                 </p>
-                                <a href="?act=productDetail&id=<?= $newProduct['idProduct']?>" class="btn">Show T-Shirt</a>
+                                <a href="?act=productDetail&id=<?= $newProduct['idProduct']?>" class="btn">Show Detail</a>
                             </div>
                         </div>
                     <?php } ?>
