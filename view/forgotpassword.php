@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Login</h2>
+                                <h2>Forgot Password</h2>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                                 <h2>New to our Shop?</h2>
                                 <p>There are advances being made in science and technology
                                     everyday, and a good example of this is the</p>
-                                <a href="#" class="btn-header">Create an Account</a>
+                                <a href="?act=create_account" class="btn-header">Create an Account</a>
                             </div>
                         </div>
                     </div>

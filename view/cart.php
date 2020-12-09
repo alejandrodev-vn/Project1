@@ -3,8 +3,7 @@
   <?php
  
   $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];
-  
-
+  var_dump($cart);
   // var_dump($_SESSION['username']);
   // session_destroy();
     // die(); 
