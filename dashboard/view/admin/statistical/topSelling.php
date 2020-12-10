@@ -12,7 +12,9 @@
 </head>
 
 <body>
-
+    <div class="chart-container right__content">
+        <canvas id="myChart" width="400" height="250"></canvas>
+    </div>
     <div class="right__table">
         <p class="right__tableTitle">TOP SELLING PRODUCT</p>
         <div class="right__tableWrapper">
@@ -38,7 +40,7 @@
                             <tr>
                                 <td><?PHP echo $i++ ?> </td>
                                 <td><?php echo $value->idProduct ?></td>
-                                <td><?php echo $value->nameProduct ?></td>
+                                <td class="nameProduct"><?php echo $value->nameProduct ?></td>
                                 <td><?php echo $value->idProductDetail ?></td>
                                 <td class="countSell"><?php echo $value->countSell?></td>
                             </tr>
@@ -54,56 +56,84 @@
         </div>
     </div>
     </div>
-    <canvas id="myChart" width="200" height="200"></canvas>
+
+     <h3 class="pdf-name">Some PDF Name</h3>
+     <button id="btn" type="button" class="open-pdf" data-pdf="source">Open</button>
+
     <script>
         const countSell = document.querySelectorAll(".countSell");
-        const list_item = []
+        const nameProduct = document.querySelectorAll(".nameProduct");
+
+        const list_item = [];
+        const list_name = [];
+
         countSell.forEach(item => {
             list_item.push(item.innerText)
-        })
+        });
+
+        nameProduct.forEach(item => {
+            list_name.push(item.innerText)
+        });
+        
     </script>
     <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    // type: 'bar',
-    type: "doughnut",
-    data: {
-        labels: ['GIANT DAMIER WAVES DENIM JACKET', 'CLOUD PRINT T-SHIRT', 'TAMBOUR SLIM MONOGRAM'],
-        // labels: ['GIANT DAMIER WAVES DENIM JACKET', 'CLOUD PRINT T-SHIRT', 'TAMBOUR SLIM MONOGRAM', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [2,5,7],
-            // data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                // 'rgba(75, 192, 192, 0.2)',
-                // 'rgba(153, 102, 255, 0.2)',
-                // 'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            // type: 'bar',
+            type: "pie",
+            data: {
+                labels: list_name,
+                // labels: ['GIANT DAMIER WAVES DENIM JACKET', 'CLOUD PRINT T-SHIRT', 'TAMBOUR SLIM MONOGRAM', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: list_item,
+                    // data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
-            }]
-        }
-    }
-});
-</script>
+            }
+        });
+
+        const btn = document.querySelector("#btn");
+        btn.addEventListener('click', () => {
+            const leftEl = document.querySelector(".left");
+            leftEl.style.display = "none";
+            if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1){ 
+                window.PPClose = false;                                    
+                window.onbeforeunload = function(){                         
+                    if(window.PPClose === false){                          
+                        return 'Leaving this page will block the parent window!\nPlease select "Stay on this Page option" and use the\nCancel button instead to close the Print Preview Window.\n';
+                    }
+                }                   
+                window.print();                                           
+                window.PPClose = true;                                      
+            }
+        })
+    </script>
 </body>
 
 </html>

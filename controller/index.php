@@ -78,7 +78,7 @@
                         if(array_key_exists("login", $_REQUEST)){
                         $user = khach_hang_select_by_id($username);
                         if($user){
-                                if($user['password'] == $password){
+                                if($user['password'] == MD5($password)){
                                 $MESSAGE = "Đăng nhập thành công!"; 
                                 $_SESSION["username"] = $user;                                                 
                                 }else{
@@ -120,16 +120,6 @@
                         }
                 break;
         case "create_account":
-                // echo "hahaa";
-                // $msg = "Please enter your infomation";
-
-                // $full_name = "";
-                // $email = "";
-                // $address = "";
-                // $phone = "";
-                // $date = "";
-                // $username = "";
-                // $password = "";
                 include "../model/create-account.php";
                 include '../view/login/create-account.php';
                 if(isset($_POST["create"])) {
@@ -144,7 +134,7 @@
                         if(empty($full_name) || empty($email) || empty($address) || empty($phone) || empty($date) || empty($username) || empty($password)) {
                                 echo "<script type='text/javascript'>alert('Vui lòng điền đầy đủ các trường để đăng ký');</script>";
                         } else {
-                                $result = create_account($conn, $full_name, $email, $address, $phone, $date, $username, $password);
+                                $result = create_account($conn, $full_name, $email, $address, $phone, $date, $username, MD5($password));
                                 if($result) {
                                         echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>"; 
                                 } else {

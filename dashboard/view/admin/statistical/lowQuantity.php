@@ -14,8 +14,10 @@
 
 <body>
 
-
-    <div class="right__table">
+    <div class="chart-container right__content">
+        <canvas id="myChart" width="400" height="250"></canvas>
+    </div>
+       <div class="right__table">
         <p class="right__tableTitle">Quantity Below 10</p>
         <div class="right__tableWrapper">
             <?PHP
@@ -59,7 +61,6 @@
         </a>
     </div>
     </div>
-      <canvas id="myChart" width="200" height="200"></canvas>
     <script>
         const nameProductEl = document.querySelectorAll(".nameProduct");
         const quantity = document.querySelectorAll(".quantity");
