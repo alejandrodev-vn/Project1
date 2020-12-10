@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="chart-container right__content">
+    <div class="chart-container" style="padding: 4rem 0;">
         <canvas id="myChart" width="400" height="250"></canvas>
     </div>
     <div class="right__table">
@@ -56,9 +56,10 @@
         </div>
     </div>
     </div>
-
+   <div class="right__content" style="padding-top: 0; padding-bottom: 0;">
      <h3 class="pdf-name">Some PDF Name</h3>
      <button id="btn" type="button" class="open-pdf" data-pdf="source">Open</button>
+    </div>
 
     <script>
         const countSell = document.querySelectorAll(".countSell");
@@ -78,6 +79,8 @@
     </script>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
+        ctx.canvas.parentNode.style.width = '75%';
+        ctx.canvas.parentNode.style.height = '70%';
         var myChart = new Chart(ctx, {
             // type: 'bar',
             type: "pie",
@@ -121,7 +124,10 @@
         const btn = document.querySelector("#btn");
         btn.addEventListener('click', () => {
             const leftEl = document.querySelector(".left");
+            const right__cards = document.querySelector(".right__cards");
             leftEl.style.display = "none";
+            right__cards.style.display = "none";
+              
             if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1){ 
                 window.PPClose = false;                                    
                 window.onbeforeunload = function(){                         
@@ -130,7 +136,9 @@
                     }
                 }                   
                 window.print();                                           
-                window.PPClose = true;                                      
+                window.PPClose = true;    
+                location.reload()
+
             }
         })
     </script>

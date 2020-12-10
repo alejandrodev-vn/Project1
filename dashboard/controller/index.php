@@ -4,10 +4,10 @@ check_role1();
 
 require_once("../model/function.php");
 $db = new Database();
-$countProducts= $db->countData('idProduct','products');
-$countUser= $db->countData('idUser','user');
-$countCategory= $db->countData('idCategory','category');
-$countBill= $db->countData('idBill','bill');
+$countProducts = $db->countData('idProduct', 'products');
+$countUser = $db->countData('idUser', 'user');
+$countCategory = $db->countData('idCategory', 'category');
+$countBill = $db->countData('idBill', 'bill');
 // include_once("../core/app.php");
 // // if(isset($_SESSION['username']) && $_SESSION['username ']!= '' ) { 
 // //     $data = $_SESSION['username'];
@@ -100,7 +100,7 @@ if (isset($_GET['act'])) {
                         $img = $db->save_file('imgUrl', $IMAGE_DIR);
                     $data = [
                         'idProduct' => $id,
-                        'color' =>$data_prd->nameProduct.' '. $_POST['color'],
+                        'color' => $data_prd->nameProduct . ' ' . $_POST['color'],
                         'size' => $_POST['size'],
                         'price' => $_POST['price'],
                         'oldPrice' => $_POST['oldPrice'],
@@ -124,7 +124,7 @@ if (isset($_GET['act'])) {
                     if ($db->save_file('imgUrl', $IMAGE_DIR))
                         $img = $db->save_file('imgUrl', $IMAGE_DIR);
                     $data = [
-                        'color' =>$data_prd->nameProduct.' '. $_POST['color'],
+                        'color' => $data_prd->nameProduct . ' ' . $_POST['color'],
                         'size' => $_POST['size'],
                         'price' => $_POST['price'],
                         'oldPrice' => $_POST['oldPrice'],
@@ -307,7 +307,7 @@ if (isset($_GET['act'])) {
             break;
         case 'bill':
             $table = $_GET['act'];
-            $data = $db->getObjectSelect($table,1,'status');
+            $data = $db->getObjectSelect($table, 1, 'status');
             $VIEW_NAME = '../view/admin/bill/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -403,7 +403,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-            case 'rating': {
+        case 'rating': {
                 $table = $_GET['act'];
                 $data = $db->getObject($table);
                 $VIEW_NAME = '../view/admin/rating/list.php';
@@ -416,38 +416,49 @@ if (isset($_GET['act'])) {
                     header("Refresh:0; url=?act=rating");
                 }
             }
-        break;
-        case 'topSelling': 
-            { 
+            break;
+        case 'topSelling': {
                 $data = $db->getTopSelling();
-                $VIEW_NAME='../view/admin/statistical/topSelling.php';
+                $VIEW_NAME = '../view/admin/statistical/topSelling.php';
             }
-        break;
-        case 'lowQuantity': 
-            { 
+            break;
+        case 'lowQuantity': {
                 $data = $db->getLowQuantity();
-                $VIEW_NAME='../view/admin/statistical/lowQuantity.php';
+                $VIEW_NAME = '../view/admin/statistical/lowQuantity.php';
             }
-        break;
-        case 'highQuantity': 
-            { 
+            break;
+        case 'highQuantity': {
                 $data = $db->getHighQuantity();
-                $VIEW_NAME='../view/admin/statistical/highQuantity.php';
+                $VIEW_NAME = '../view/admin/statistical/highQuantity.php';
             }
-        break;
-        case 'revenue': 
-            { 
+            break;
+        case 'revenue': {
                 $data = $db->getRevenueCurrentMonth();
-                $VIEW_NAME='../view/admin/statistical/revenueCurrentMonth.php';
+                $VIEW_NAME = '../view/admin/statistical/revenueCurrentMonth.php';
             }
-        break;
+            break;
+        case 'logout': {
+            unset($_SESSION['username']);
+                      $MESSAGE = 'đăng xuất thành công';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
+                        $MESSAGE = '';
+                        header("refresh:0");
+            }
+            break;
+
         default:
             require '../view/admin/home/home.php';
             break;
     }
 } else {
     $table = "bill";
-    $data = $db->getObjectSelect($table,0,'status');
+    $data = $db->getObjectSelect($table, 0, 'status');
     $VIEW_NAME = '../view/admin/home/home.php';
 }
+if($_SESSION['username']['idRole'] ==  1)
 include_once('../view/admin/layout.php');
+else 
+{ 
+include_once('../view/admin/layout_manage.php');
+}

@@ -14,7 +14,7 @@
 
 <body>
 
-    <div class="chart-container right__content">
+    <div class="chart-container">
         <canvas id="myChart" width="400" height="250"></canvas>
     </div>
     
@@ -63,7 +63,10 @@
         </div>
     </div>
     </div>
-
+   <div class="right__content" style="padding-top: 0; padding-bottom: 0;">
+     <h3 class="pdf-name">Some PDF Name</h3>
+     <button id="btn" type="button" class="open-pdf" data-pdf="source">Open</button>
+    </div>
     <script>
         const totalDay = document.querySelectorAll(".totalDay");
         const dateEl = document.querySelectorAll(".date");
@@ -78,6 +81,8 @@
     </script>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
+     ctx.canvas.parentNode.style.width = '80%';
+      ctx.canvas.parentNode.style.height = '60%';
     var myChart = new Chart(ctx, {
         // type: 'bar',
         type: "bar",
@@ -114,6 +119,26 @@
             }
         }
     });
+       const btn = document.querySelector("#btn");
+        btn.addEventListener('click', () => {
+            const leftEl = document.querySelector(".left");
+            const right__cards = document.querySelector(".right__cards");
+            leftEl.style.display = "none";
+            right__cards.style.display = "none";
+              
+            if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1){ 
+                window.PPClose = false;                                    
+                window.onbeforeunload = function(){                         
+                    if(window.PPClose === false){                          
+                        return 'Leaving this page will block the parent window!\nPlease select "Stay on this Page option" and use the\nCancel button instead to close the Print Preview Window.\n';
+                    }
+                }                   
+                window.print();                                           
+                window.PPClose = true;    
+                location.reload()
+
+            }
+        })
 </script>
 </body>
 

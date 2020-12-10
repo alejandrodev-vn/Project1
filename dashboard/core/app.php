@@ -56,7 +56,7 @@ function delete_cookie($name){
 function check_role1(){
     global $SITE_URL;
    if(isset($_SESSION['username'])){
-       if($_SESSION['username']['idRole'] == 1){
+       if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2)){
            return;
        } else {
            

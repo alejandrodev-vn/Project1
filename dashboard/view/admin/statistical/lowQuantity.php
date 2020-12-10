@@ -14,8 +14,8 @@
 
 <body>
 
-    <div class="chart-container right__content">
-        <canvas id="myChart" width="400" height="250"></canvas>
+    <div class="chart-container">
+        <canvas id="myChart" width="400" height="250" style="padding: 2rem 0;"></canvas>
     </div>
        <div class="right__table">
         <p class="right__tableTitle">Quantity Below 10</p>
@@ -56,11 +56,17 @@
                     </tbody>
                 </table>
         </div>
-        <a href="?act=products" class="right__tableMore">
+        <!-- <a href="?act=products" class="right__tableMore">
             <p>Xem tất cả các sản phẩm</p> <img src="../public/assets/arrow-right-black.svg" alt="">
-        </a>
+        </a> -->
     </div>
+     
     </div>
+    <div class="right__content" style="padding-top: 0; padding-bottom: 0;">
+     <h3 class="pdf-name">Some PDF Name</h3>
+     <button id="btn" type="button" class="open-pdf" data-pdf="source">Open</button>
+    </div>
+     
     <script>
         const nameProductEl = document.querySelectorAll(".nameProduct");
         const quantity = document.querySelectorAll(".quantity");
@@ -75,6 +81,8 @@
     </script>
     <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+      ctx.canvas.parentNode.style.width = '75%';
+      ctx.canvas.parentNode.style.height = '70%';
 var myChart = new Chart(ctx, {
     // type: 'bar',
     type: "doughnut",
@@ -114,6 +122,27 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+ const btn = document.querySelector("#btn");
+        btn.addEventListener('click', () => {
+            const leftEl = document.querySelector(".left");
+            const right__cards = document.querySelector(".right__cards");
+            leftEl.style.display = "none";
+            right__cards.style.display = "none";
+            ctx.canvas.parentNode.style.height = '40%';
+    ctx.canvas.parentNode.style.width = '60%';
+            if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1){ 
+                window.PPClose = false;                                    
+                window.onbeforeunload = function(){                         
+                    if(window.PPClose === false){                          
+                        return 'Leaving this page will block the parent window!\nPlease select "Stay on this Page option" and use the\nCancel button instead to close the Print Preview Window.\n';
+                    }
+                }                   
+                window.print();                                           
+                window.PPClose = true;   
+                location.reload()
+
+            }
+        })
 </script>
 </body>
 

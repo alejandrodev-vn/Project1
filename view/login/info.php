@@ -19,7 +19,7 @@
                 
                 <?php
                 
-                    if($_SESSION['username']['idRole'] == 1){
+                    if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2)) {
                         echo "<li><a href='../dashboard'>quản lí</a></li>";
                     }
                 ?>
