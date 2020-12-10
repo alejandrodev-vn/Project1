@@ -3,26 +3,23 @@
             width:50%;
             margin:0 auto;
         }
+        li{
+            list-style:none;
+        }
     </style>
-        <div class="container profile__wrapper">
+        <div class="container profile__wrapper pt-70">
             <div class="row">
-            <div class="col-lg-12" ><h3>Profile: </h3> </div>
-<div>
-                <div>
-                
-                    <?= $_SESSION['username']['fullName']?>
-                </div>
-                <!-- <li><a href="?act=login&logout" onclick="tai_lai_trang()">Đăng xuất</a></li> -->
-                <li><a href="?act=logout">Đăng xuất</a></li>
-                <li><a href="doi-mk.php">Đổi mật khẩu</a></li>
-                <li><a href="cap-nhat-tk.php">Cập nhật tài khoản</a></li>
-                
+            <div class="col-lg-12" ><h3>Profile: <?= $_SESSION['username']['fullName']?> </h3> </div>
+            <ul>    
+                <li><a href="cap-nhat-tk.php">Update Profile</a></li>
+                <li><a href="doi-mk.php">Change password</a></li>
                 <?php
                 
-                    if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2)) {
-                        echo "<li><a href='../dashboard'>quản lí</a></li>";
+                    if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2)|| ($_SESSION['username']['idRole'] == 3)) {
+                        echo "<li><a href='../dashboard'>Dashboard</a></li>";
                     }
                 ?>
-            </div>
+                <li><a href="?act=logout">Logout</a></li>
+            </ul>
             </div>
         </div>        

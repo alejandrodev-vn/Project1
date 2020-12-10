@@ -25,6 +25,7 @@
                             <th>ID Role</th>
                             <th>Level</th>
                             <th>Xoá</th>
+                            <th>Edit</th>
 
                         </tr>
                     </thead>
@@ -37,7 +38,10 @@
                                 <td><?php echo $value->idRole ?></td>
                                 <td><?php echo $value->level ?></td>
                                 <td class="text-center">
-                                    <a href="?act=user&delete=<?PHP echo $value->idRole ?>" class="btn-edit">Del</a>
+                                    <a href="?act=role&delete=<?PHP echo $value->idRole ?>" class="btn-edit">Del</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="?act=role&edit=<?PHP echo $value->idRole ?>" class="btn-edit">Edit</a>
                                 </td>
                             </tr>
                         <?php }

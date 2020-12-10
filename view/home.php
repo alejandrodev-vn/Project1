@@ -187,7 +187,7 @@
                 </div>
                 <!-- Button -->
                 <div class="row justify-content-center">
-                    <div class="room-btn pt-70">
+                    <div class="room-btn">
                         <a href="?act=shop" class="btn view-btn1">View More Products</a>
                     </div>
                 </div>

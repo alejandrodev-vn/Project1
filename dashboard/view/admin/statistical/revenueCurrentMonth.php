@@ -65,7 +65,7 @@
     </div>
    <div class="right__content" style="padding-top: 0; padding-bottom: 0;">
      <h3 class="pdf-name">Some PDF Name</h3>
-     <button id="btn" type="button" class="open-pdf" data-pdf="source">Open</button>
+     <button style="padding:5px;background:#ff9438" id="btn" type="button" class="open-pdf" data-pdf="source">Print</button>
     </div>
     <script>
         const totalDay = document.querySelectorAll(".totalDay");

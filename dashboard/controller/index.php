@@ -363,6 +363,23 @@ if (isset($_GET['act'])) {
                     echo "<script type='text/javascript'>alert('$message');</script>";
                     header("Refresh:0; url=?act=role");
                 }
+                if (isset($_GET['edit'])) {
+                    $id = (int)$_GET['edit'];
+                    $data = $db->getRowObject($table, $id, 'idRole');
+                    $VIEW_NAME = '../view/admin/role/edit.php';
+                    if (isset($_POST['update']) && ($_POST['update'])) {
+                        $data = [
+                            'level' => $_POST['level'],
+    
+                        ];
+                        if ($db->update($table, $data, $id, 'idRole'))
+                            $message = "Cập nhật thành công";
+    
+                        else $message = "Không thể thực hiện";
+                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        header("Refresh:0; url=?act=role");
+                    }
+                }
                 if (isset($_GET['new'])) {
                     $VIEW_NAME = '../view/admin/role/new.php';
                     if (isset($_POST['update']) && ($_POST['update'])) {
@@ -456,9 +473,11 @@ if (isset($_GET['act'])) {
     $data = $db->getObjectSelect($table, 0, 'status');
     $VIEW_NAME = '../view/admin/home/home.php';
 }
-if($_SESSION['username']['idRole'] ==  1)
-include_once('../view/admin/layout.php');
-else 
-{ 
-include_once('../view/admin/layout_manage.php');
+if($_SESSION['username']['idRole'] ==  1){
+    include_once('../view/admin/layout.php');
 }
+    else if($_SESSION['username']['idRole'] ==  2){ 
+        include_once('../view/admin/layout_manage.php');
+    }else if($_SESSION['username']['idRole'] ==  3){
+        include_once('../view/admin/layout_data.php');
+    }else header("location: ../../index.php");
