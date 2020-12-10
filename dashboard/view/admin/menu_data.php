@@ -5,7 +5,7 @@
         <span></span>
     </span>
     <div class="left__content">
-        <div class="left__logo"><img src="../public/assets/logo.png " width="70px" alt="logo"></div>
+    <div class="left__logo"><a href="../../index.php"><img src="../public/assets/logo.png " width="70px" alt="logo"></a></div>
         <div class="left__profile">
             <div class="left__image"><img src="../public/assets/me.jpg" style="object-fit:cover" alt="avatar"></div>
             <p class="left__name">LV</p>

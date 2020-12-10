@@ -53,7 +53,7 @@ function delete_cookie($name){
     add_cookie($name,"", -1);
 }
 
-function check_role1(){
+function check_role(){
     global $SITE_URL;
    if(isset($_SESSION['username'])){
        if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2) || ($_SESSION['username']['idRole'] == 3)){
@@ -67,5 +67,53 @@ function check_role1(){
    }
    $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
    header("location: ../../controller/index.php?act=login");
+}
+function check_admin(){
+    global $SITE_URL;
+   if(isset($_SESSION['username'])){
+       if(($_SESSION['username']['idRole'] == 1)){
+           return;
+       } else {
+           
+       }
+       if(strpos($_SERVER["REQUEST_URI"], '/dashboard/') == FALSE){
+           return;
+       }
+   }
+   $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
+   echo "<script type='text/javascript'>alert('Không đủ thẩm quyền!');</script>";
+   header("location:../controller");
+}
+function check_manage(){
+    global $SITE_URL;
+   if(isset($_SESSION['username'])){
+       if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2)){
+           return;
+       } else {
+           
+       }
+       if(strpos($_SERVER["REQUEST_URI"], '/dashboard/') == FALSE){
+           return;
+       }
+   }
+   $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
+   echo "<script type='text/javascript'>alert('Không đủ thẩm quyền!');</script>";
+   header("location:../controller");
+}
+function check_data(){
+    global $SITE_URL;
+   if(isset($_SESSION['username'])){
+       if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 3)){
+           return;
+       } else {
+           
+       }
+       if(strpos($_SERVER["REQUEST_URI"], '/dashboard/') == FALSE){
+           return;
+       }
+   }
+   $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
+   echo "<script type='text/javascript'>alert('Không đủ thẩm quyền!');</script>";
+   header("location:../controller");
 }
 ?>

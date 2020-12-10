@@ -78,7 +78,7 @@
                         if(array_key_exists("login", $_REQUEST)){
                         $user = khach_hang_select_by_id($username);
                         if($user){
-                                if($user['password'] == MD5($password)){
+                                if($user['password'] == MD5($password)){        
                                 $MESSAGE = "Đăng nhập thành công!"; 
                                 $_SESSION["username"] = $user;                                                 
                                 }else{
