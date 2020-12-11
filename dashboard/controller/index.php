@@ -19,9 +19,9 @@ if (isset($_GET['act'])) {
     switch ($act) {
         case 'products':check_data();
             $table = $_GET['act'];
-            $data_ctr = $db->getObject('category');
-            $data_brand = $db->getObject('brand');
-            $data = $db->getObject($table);
+            $data_ctr = $db->getObject('category','idCategory');
+            $data_brand = $db->getObject('brand','idThuongHieu');
+            $data = $db->getObject($table,'idProduct');
             $VIEW_NAME = '../view/admin/product/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -141,8 +141,8 @@ if (isset($_GET['act'])) {
             break;
         case 'category':check_data();
             $table = $_GET['act'];
-            $data = $db->getObject($table);
-            $data_group = $db->getObject('groupproduct');
+            $data = $db->getObject($table,'idCategory');
+            $data_group = $db->getObject('groupproduct','idGroupProduct');
             $VIEW_NAME = '../view/admin/category/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -187,7 +187,7 @@ if (isset($_GET['act'])) {
             break;
         case 'groupproduct':check_data();
             $table = $_GET['act'];
-            $data = $db->getObject($table);
+            $data = $db->getObject($table,'idGroupProduct');
             $VIEW_NAME = '../view/admin/groupproduct/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -231,7 +231,7 @@ if (isset($_GET['act'])) {
             break;
         case 'brand':check_data();
             $table = $_GET['act'];
-            $data = $db->getObject($table);
+            $data = $db->getObject($table,'idThuongHieu');
             $VIEW_NAME = '../view/admin/brand/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -275,8 +275,8 @@ if (isset($_GET['act'])) {
             break;
         case 'user':check_manage();
             $table = $_GET['act'];
-            $data_role = $db->getObject('role');
-            $data = $db->getObject($table);
+            $data_role = $db->getObject('role','idRole');
+            $data = $db->getObject($table,'idUser');
             $VIEW_NAME = '../view/admin/user/list.php';
             if (isset($_GET['delete'])) {
                 $id = (int)$_GET['delete'];
@@ -354,7 +354,7 @@ if (isset($_GET['act'])) {
             break;
         case 'role':check_admin(); {
                 $table = $_GET['act'];
-                $data = $db->getObject($table);
+                $data = $db->getObject($table,'idRole');
                 $VIEW_NAME = '../view/admin/role/list.php';
                 if (isset($_GET['delete'])) {
                     $id = (int)$_GET['delete'];
@@ -398,7 +398,7 @@ if (isset($_GET['act'])) {
             break;
         case 'comment':check_manage(); {
                 $table = $_GET['act'];
-                $data = $db->getObject($table);
+                $data = $db->getObject($table,'idComment');
                 $VIEW_NAME = '../view/admin/comment/list.php';
                 if (isset($_GET['delete'])) {
                     $id = (int)$_GET['delete'];
@@ -423,7 +423,7 @@ if (isset($_GET['act'])) {
             break;
         case 'rating':check_manage(); {
                 $table = $_GET['act'];
-                $data = $db->getObject($table);
+                $data = $db->getObject($table,'idRating');
                 $VIEW_NAME = '../view/admin/rating/list.php';
                 if (isset($_GET['delete'])) {
                     $id = (int)$_GET['delete'];

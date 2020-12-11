@@ -75,9 +75,9 @@ class Database
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
         return mysqli_query($this->conn, $sql);
     }
-    public function getObject($table = '')
+    public function getObject($table = '',$id= '')
     {
-        $sql = 'SELECT * FROM ' . $table;
+        $sql = 'SELECT * FROM ' . $table .' ORDER BY '. $id .' DESC';
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_object($result)) {
