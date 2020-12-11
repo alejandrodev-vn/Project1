@@ -96,7 +96,7 @@
                     break;
                     }
             }
-        }
+        } 
         if(!empty($_SESSION['group'])){
             $where .= !empty($where) ? ' and products.idProduct in(Select products.idProduct from products INNER JOIN category ON category.idCategory = products.idCategory INNER JOIN groupproduct ON category.idGroupProduct = groupproduct.idGroupProduct where groupproduct.idGroupProduct = '.$_SESSION['group']['value'].')' : ' INNER JOIN category ON category.idCategory = products.idCategory INNER JOIN groupproduct ON category.idGroupProduct = groupproduct.idGroupProduct where groupproduct.idGroupProduct = '.$_SESSION['group']['value'].'';
         }
@@ -131,6 +131,8 @@
             }else if($value == 4){
                 $where .= ' GROUP BY idProduct order by flashSale asc';
             }
+        }else if(!empty($_SESSION['filter'])){
+            $where .= ' group by productdetail.idProduct ';
         }
         $getProduct = getAllProductByFilter($where);
         $products = '';
