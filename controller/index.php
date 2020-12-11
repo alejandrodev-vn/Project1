@@ -237,14 +237,18 @@
                         if(empty($full_name) || empty($email) || empty($address) || empty($phone) || empty($date) || empty($username) || empty($password)) {
                                 echo "<script type='text/javascript'>alert('Vui lòng điền đầy đủ các trường để đăng ký');</script>";
                         } else {
-                                $result = create_account($conn, $full_name, $email, $address, $phone, $date, $username, MD5($password));
-                                if($result) {
-                                        echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>"; 
+                                $checkEmptyAccount = isEmptyAccount($conn, $email, $username);
+                                if($checkEmptyAccount) {
+                                   echo "<script type='text/javascript'>alert('Email hoặc username đã được tồn tại');</script>";      
                                 } else {
-                                        echo "<script type='text/javascript'>alert('Đăng ký thất bại');</script>"; 
+                                        $result = create_account($conn, $full_name, $email, $address, $phone, $date, $username, MD5($password));
+                                        if($result) {
+                                                echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>"; 
+                                        } else {
+                                                echo "<script type='text/javascript'>alert('Đăng ký thất bại');</script>"; 
+                                        }
                                 }
                         }
-
                        
                 }
 
