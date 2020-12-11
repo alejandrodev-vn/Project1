@@ -1,12 +1,4 @@
-    <style>
-        .profile__wrapper{
-            width:50%;
-            margin:0 auto;
-        }
-        li{
-            list-style:none;
-        }
-    </style>
+
         <div class="container profile__wrapper pt-70">
             <div class="row">
             <div class="col-lg-12" ><h3>Profile: <?= $_SESSION['username']['fullName']?> </h3> </div>

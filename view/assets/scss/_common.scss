@@ -1186,7 +1186,7 @@ input:focus::-moz-placeholder {
 		.form-control:focus {
 			color: #495057;
 			background-color: #fff;
-			border-color: $font_d;
+			border-color: #000;
 			outline: 0;
 			box-shadow: none;
 		}
@@ -1229,7 +1229,29 @@ input:focus::-moz-placeholder {
 	}
 	
 }
+.change-password__wrapper{
+	width: 40%;
+    margin: 0 auto;
+    padding: 50px;
+    background: #fafafa;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 2px solid #ff9384;
+}
+.profile__wrapper{
+	width: 40%;
+    margin: 0 auto;
+    padding: 50px;
+    background: #fafafa;
+    margin-top: 20px;
+    border-radius: 15px;
+	border: 2px solid #ff9384;
+	li{
+		list-style:none;
+		line-height: 30px;
+	}
 
+}
 /*----------------when other page include End--------------- */
 
 
