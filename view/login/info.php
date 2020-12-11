@@ -12,7 +12,7 @@
             <div class="col-lg-12" ><h3>Profile: <?= $_SESSION['username']['fullName']?> </h3> </div>
             <ul>    
                 <li><a href="cap-nhat-tk.php">Update Profile</a></li>
-                <li><a href="doi-mk.php">Change password</a></li>
+                <li><a href="index.php?act=change_pass">Change password</a></li>
                 <?php
                 
                     if(($_SESSION['username']['idRole'] == 1) || ($_SESSION['username']['idRole'] == 2)|| ($_SESSION['username']['idRole'] == 3)) {

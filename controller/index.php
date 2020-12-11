@@ -26,7 +26,55 @@
             case 'shopping-cart':
                     include "../view/cart.php";
                     break;                    
-            case 'cart':
+            case 'change_pass':
+                if(isset($_SESSION['username'])){
+                        include '../model/changepass.php';  
+                        include "../view/change_pass.php";
+                                      
+                        if(isset($_POST["change_pass"])) {
+                        $idUser = $_POST["idUser"];    
+                        $old_password = @MD5($_POST["old_password"]);
+                        $new_password =@($_POST['new_password']);
+                        $passwordcf = @($_POST['passwordcf']);
+
+                        if ($old_password != $_SESSION['username']['password'])
+                        {
+                                echo "<script type='text/javascript'>alert('Mật khẩu cũ nhập không chính xác, đảm bảo đã tắt caps lock');</script>";
+                        
+                        }
+                        else if (strlen($new_password) < 6)
+                        {
+                                echo "<script type='text/javascript'>alert('Mật khẩu quá ngắn, hãy thử với mật khẩu khác an toàn hơn');</script>";
+                        
+                        }
+                        else if ($new_password != $passwordcf)
+                        {
+                                echo "<script type='text/javascript'>alert('Nhập lại mật khẩu mới không khớp, đảm bảo đã tắt caps lock');</script>";
+                        
+                        }
+                        else
+                        {
+                                
+                                $new_password = md5($new_password);
+                                $sql_change_pass = "UPDATE user SET password = '$new_password' WHERE idUser = $idUser";                                
+                                $conn->query($sql_change_pass);                                
+                                if($sql_change_pass) {                                
+                                        echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>"; 
+                                        unset($_SESSION['username']);
+                                       
+                                } else {
+                                        echo "<script type='text/javascript'>alert('Đăng ký thất bại');</script>"; 
+                                }
+                                
+                        }
+                }
+                        }else{
+                                include "../view/login/login-form.php";
+                                $MESSAGE = "";
+                                
+                        }
+
+                
                     break;
             case 'checkout':
                     

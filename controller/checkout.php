@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../model/connect.php";
-$conn=connect();
+$conn=connect(); 
 $cart=(isset($_SESSION['cart']))? $_SESSION['cart'] : [];
     $total_price = 0; 
     foreach($cart as $k =>$v){

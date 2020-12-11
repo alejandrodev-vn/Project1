@@ -4,4 +4,3 @@ function khach_hang_select_by_id($username){
     return pdo_query_one($sql, $username);
 
 }
-
