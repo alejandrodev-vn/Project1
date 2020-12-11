@@ -29,6 +29,7 @@
             case 'change_pass':
                 $MESSAGE="";
                 if(isset($_SESSION['username'])){
+                        
                         include '../model/changepass.php';  
                         include "../view/change_pass.php";
                                       
@@ -70,23 +71,32 @@
                         }
                 }
                         }else{
+                        $MESSAGE = 'yêu cầu đăng nhập';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
                                 include "../view/login/login-form.php";
-                                $MESSAGE = "";
+                                
                                 
                         }
 
                 
                     break;
-            case 'checkout':
-                        $MESSAGE="";
-                        if(isset($_SESSION['username'])){
-                                include "../view/checkout.php";
-                                $MESSAGE="";
-                        }
-                        else{
-                                include "../view/login/login-form.php";
-                                $MESSAGE="";
-                        }
+            case 'checkout':                
+                if(!isset($_SESSION['username'])){
+                        $MESSAGE = 'Please login your account';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
+                 include "../view/login/login-form.php";                
+                }else{
+                        
+                        include "../view/checkout.php";
+                        
+
+                }
+                  
+                  
+                    include "../view/checkout.php";
+                    
                     break;
             case 'confirmation':
                     include "../view/confirmation.php";
