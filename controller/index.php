@@ -31,7 +31,7 @@
                 if(isset($_SESSION['username'])){
                         
                         include '../model/changepass.php';  
-                        include "../view/change_pass.php";
+                        include_once "../view/change_pass.php";
                                       
                         if(isset($_POST["change_pass"])) {
                         $idUser = $_POST["idUser"];    
@@ -41,17 +41,17 @@
 
                         if ($old_password != $_SESSION['username']['password'])
                         {
-                                echo "<script type='text/javascript'>alert('Mật khẩu cũ nhập không chính xác, đảm bảo đã tắt caps lock');</script>";
+                                echo "<script type='text/javascript'>alert('Old password entered incorrectly, make sure caps lock is turned off');</script>";
                         
                         }
                         else if (strlen($new_password) < 6)
                         {
-                                echo "<script type='text/javascript'>alert('Mật khẩu quá ngắn, hãy thử với mật khẩu khác an toàn hơn');</script>";
+                                echo "<script type='text/javascript'>alert('The password is too short, try with another more secure password');</script>";
                         
                         }
                         else if ($new_password != $passwordcf)
                         {
-                                echo "<script type='text/javascript'>alert('Nhập lại mật khẩu mới không khớp, đảm bảo đã tắt caps lock');</script>";
+                                echo "<script type='text/javascript'>alert('Re-enter the new password that doesn't match, make sure caps lock is turned off');</script>";
                         
                         }
                         else
@@ -63,7 +63,6 @@
                                 if($sql_change_pass) {                                
                                         echo "<script type='text/javascript'>alert('Change password successfully');</script>"; 
                                         unset($_SESSION['username']);
-                                       
                                 } else {
                                         echo "<script type='text/javascript'>alert('Change password failed!');</script>"; 
                                 }
@@ -71,8 +70,7 @@
                         }
                 }
                         }else{
-                        $MESSAGE = 'yêu cầu đăng nhập';
-                        // header
+                        $MESSAGE = 'Please login your account';
                         echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
                                 include "../view/login/login-form.php";
                                 
