@@ -1,6 +1,6 @@
 <?php
 include "../core/app.php";
-check_role1();
+check_role();
 
 require_once("../model/function.php");
 $db = new Database();
@@ -17,7 +17,7 @@ $countBill = $db->countData('idBill', 'bill');
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
-        case 'products':
+        case 'products':check_data();
             $table = $_GET['act'];
             $data_ctr = $db->getObject('category');
             $data_brand = $db->getObject('brand');
@@ -139,7 +139,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'category':
+        case 'category':check_data();
             $table = $_GET['act'];
             $data = $db->getObject($table);
             $data_group = $db->getObject('groupproduct');
@@ -185,7 +185,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'groupproduct':
+        case 'groupproduct':check_data();
             $table = $_GET['act'];
             $data = $db->getObject($table);
             $VIEW_NAME = '../view/admin/groupproduct/list.php';
@@ -229,7 +229,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'brand':
+        case 'brand':check_data();
             $table = $_GET['act'];
             $data = $db->getObject($table);
             $VIEW_NAME = '../view/admin/brand/list.php';
@@ -273,7 +273,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'user':
+        case 'user':check_manage();
             $table = $_GET['act'];
             $data_role = $db->getObject('role');
             $data = $db->getObject($table);
@@ -306,6 +306,7 @@ if (isset($_GET['act'])) {
             }
             break;
         case 'bill':
+            check_manage();
             $table = $_GET['act'];
             $data = $db->getObjectSelect($table, 1, 'status');
             $VIEW_NAME = '../view/admin/bill/list.php';
@@ -351,7 +352,7 @@ if (isset($_GET['act'])) {
             }
 
             break;
-        case 'role': {
+        case 'role':check_admin(); {
                 $table = $_GET['act'];
                 $data = $db->getObject($table);
                 $VIEW_NAME = '../view/admin/role/list.php';
@@ -395,7 +396,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'comment': {
+        case 'comment':check_manage(); {
                 $table = $_GET['act'];
                 $data = $db->getObject($table);
                 $VIEW_NAME = '../view/admin/comment/list.php';
@@ -420,7 +421,7 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'rating': {
+        case 'rating':check_manage(); {
                 $table = $_GET['act'];
                 $data = $db->getObject($table);
                 $VIEW_NAME = '../view/admin/rating/list.php';
@@ -434,22 +435,22 @@ if (isset($_GET['act'])) {
                 }
             }
             break;
-        case 'topSelling': {
+        case 'topSelling':check_manage(); {
                 $data = $db->getTopSelling();
                 $VIEW_NAME = '../view/admin/statistical/topSelling.php';
             }
             break;
-        case 'lowQuantity': {
+        case 'lowQuantity':check_manage(); {
                 $data = $db->getLowQuantity();
                 $VIEW_NAME = '../view/admin/statistical/lowQuantity.php';
             }
             break;
-        case 'highQuantity': {
+        case 'highQuantity':check_manage(); {
                 $data = $db->getHighQuantity();
                 $VIEW_NAME = '../view/admin/statistical/highQuantity.php';
             }
             break;
-        case 'revenue': {
+        case 'revenue':check_manage(); {
                 $data = $db->getRevenueCurrentMonth();
                 $VIEW_NAME = '../view/admin/statistical/revenueCurrentMonth.php';
             }
