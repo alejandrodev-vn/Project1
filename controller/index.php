@@ -94,11 +94,51 @@
                 }
                   
                   
-                    include "../view/checkout.php";
+                       include "../view/checkout.php";
                     
                     break;
             case 'confirmation':
                     include "../view/confirmation.php";
+                    break;
+            case 'change_info':
+                if(isset($_SESSION['username'])){                        
+                        include "../view/change_info.php";
+                        if(isset($_POST["change_info"])) {
+                        $idUser = $_POST["idUser"];    
+                        $fullname_new = ($_POST["fullName"]);
+                        $phonenumber_new =($_POST['phoneNumber']);
+                        $addres_new = ($_POST['address']);
+                        if(strlen($fullname_new) < 1)
+                        {
+                                echo "<script type='text/javascript'>alert('Quý khách chưa nhập đủ thông tin');</script>";
+                        
+                        } 
+                        else
+                        {
+                                $sql_change_info = "UPDATE user SET fullName = '$fullname_new', phoneNumber = '$phonenumber_new',  Address='$addres_new'  WHERE idUser = $idUser";                                
+                                $conn->query($sql_change_info);                                
+                                if($sql_change_info) {                                
+                                        echo "<script type='text/javascript'>alert('Đăng ký thành công- vui Lòng đăng nhập lại');</script>";
+                                        unset($_SESSION['username']);
+                                       
+                                } else {
+                                        echo "<script type='text/javascript'>alert('Đăng ký thất bại');</script>"; 
+                                }
+                                
+                                
+                        }
+                
+                        }   
+                        
+                }else{
+                        $MESSAGE = 'Quý khách vừa đổi thông tin vui lòng đăng nhập lại';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
+                                include "../view/login/login-form.php";
+                                
+                                
+                        }
+        
                     break;
             case 'contact':
                     include "../view/contact.php";
