@@ -27,6 +27,7 @@
                     include "../view/cart.php";
                     break;                    
             case 'change_pass':
+                $MESSAGE="";
                 if(isset($_SESSION['username'])){
                         include '../model/changepass.php';  
                         include "../view/change_pass.php";
@@ -59,11 +60,11 @@
                                 $sql_change_pass = "UPDATE user SET password = '$new_password' WHERE idUser = $idUser";                                
                                 $conn->query($sql_change_pass);                                
                                 if($sql_change_pass) {                                
-                                        echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>"; 
+                                        echo "<script type='text/javascript'>alert('Change password successfully');</script>"; 
                                         unset($_SESSION['username']);
                                        
                                 } else {
-                                        echo "<script type='text/javascript'>alert('Đăng ký thất bại');</script>"; 
+                                        echo "<script type='text/javascript'>alert('Change password failed!');</script>"; 
                                 }
                                 
                         }
@@ -77,9 +78,15 @@
                 
                     break;
             case 'checkout':
-                    
-                    include "../view/checkout.php";
-                    
+                        $MESSAGE="";
+                        if(isset($_SESSION['username'])){
+                                include "../view/checkout.php";
+                                $MESSAGE="";
+                        }
+                        else{
+                                include "../view/login/login-form.php";
+                                $MESSAGE="";
+                        }
                     break;
             case 'confirmation':
                     include "../view/confirmation.php";
