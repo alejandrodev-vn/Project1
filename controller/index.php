@@ -28,6 +28,7 @@
                     break;                    
             case 'change_pass':
                 if(isset($_SESSION['username'])){
+                        
                         include '../model/changepass.php';  
                         include "../view/change_pass.php";
                                       
@@ -69,15 +70,30 @@
                         }
                 }
                         }else{
+                        $MESSAGE = 'yêu cầu đăng nhập';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
                                 include "../view/login/login-form.php";
-                                $MESSAGE = "";
+                                
                                 
                         }
 
                 
                     break;
-            case 'checkout':
-                    
+            case 'checkout':                
+                if(!isset($_SESSION['username'])){
+                        $MESSAGE = 'yêu cầu đăng nhập';
+                        // header
+                        echo "<script type='text/javascript'>alert('$MESSAGE');</script>";
+                 include "../view/login/login-form.php";                
+                }else{
+                        
+                        include "../view/checkout.php";
+                        
+
+                }
+                  
+                  
                     include "../view/checkout.php";
                     
                     break;

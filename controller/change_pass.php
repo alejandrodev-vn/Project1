@@ -1,7 +1,4 @@
-<?php
-session_start();
-include "../model/connect.php";
-$conn= connect();
+<!-- 
 // if($_POST['idUser']= $_SESSION['idUser']){
 //     if(MD5($_POST['password']) = MD5($_SESSION['password'])){
 //         echo 'chansquadi ma';
@@ -29,4 +26,4 @@ $conn= connect();
 //                 echo "<a href='index.php?act=change_pass'>tro ve</a>";
 //                 // header("location :index.php?act=change_pass");
                 
-//             }
+//             } -->

@@ -1,5 +1,5 @@
 
-    <main>
+  <main>
         <!-- Hero Area Start-->
         <div class="slider-area ">
             <div class="single-slider slider-height2 d-flex align-items-center">
@@ -208,4 +208,6 @@
         </section>
         <!--================End Checkout Area =================-->
     </main>
-  
+<?php
+}
+?>
